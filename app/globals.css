@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* Add this code to the end of your app/globals.css file */
+
+body {
+  background-image: url('/background-pattern.png');
+  background-size: cover; /* This makes the image cover the entire background */
+  background-position: center; /* This centers the image */
+  background-repeat: no-repeat; /* This prevents the image from tiling */
+  background-attachment: fixed; /* This makes the background stay in place when scrolling */
+}
