@@ -1,19 +1,9 @@
-// app/page.jsx
-import Hero from "@/components/Hero";
-import ProblemStatement from "@/components/ProblemStatement";
-import SolutionTabs from "@/components/SolutionTabs";
-import WhatWeCollect from "@/components/WhatWeCollect";
-import AboutSection from "@/components/AboutSection";
-import ContactSection from "@/components/ContactSection"; 
-export default function Home() {
+// A temporary, simplified app/page.jsx for testing
+
+export default function HomePage() {
   return (
-    <main>
-      <Hero />
-      <ProblemStatement />
-      <SolutionTabs />
-      <WhatWeCollect />
-      <AboutSection />
-      <ContactSection /> 
-    </main>
+    <div>
+      <h1>Hello, RevivaGreen! This is a test.</h1>
+    </div>
   );
 }
