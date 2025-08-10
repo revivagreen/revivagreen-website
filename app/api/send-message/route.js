@@ -1,21 +1,21 @@
 // app/api/send-message/route.js
-
 import { Resend } from 'resend';
 import { NextResponse } from 'next/server';
 import Twilio from 'twilio';
 
-export async function POST(req) {
-  // Initialize clients inside the function to fix Vercel build error
-  const resend = new Resend(process.env.RESEND_API_KEY);
-  const twilioClient = Twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
+const resend = new Resend(process.env.RESEND_API_KEY);
+const twilioClient = Twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
 
+export async function POST(req) {
   try {
     const { name, email, subject, message } = await req.json();
 
-    // --- 1. Send the Email via Resend ---
+    // --- Action 1: Send Notification Email to YOU ---
     await resend.emails.send({
-      from: 'RevivaGreen Website <onboarding@resend.dev>',
-      to: 'info@revivagreen.com',
+      // We can now send from our own verified domain
+      from: 'Contact Enquiry <contact@revivagreen.com>', 
+      // This will now work correctly
+      to: 'info@revivagreen.com',      
       reply_to: email,
       subject: `New Message from ${name}: ${subject}`,
       html: `
@@ -31,16 +31,38 @@ export async function POST(req) {
       `,
     });
 
-    // --- 2. Send the SMS Notification via Twilio ---
+    // --- Action 2: Send Confirmation Email to the USER ---
+    await resend.emails.send({
+      // We can now send from a professional "support" address
+      from: 'RevivaGreen Support <support@revivagreen.com>',
+      // This will now correctly send to the user's email address
+      to: email,                                            
+      subject: `We've Received Your Message!`,
+      html: `
+        <div>
+          <h2>Hi ${name},</h2>
+          <p>Thank you for contacting RevivaGreen. We have received your message and will get back to you as soon as possible.</p>
+          <br>
+          <p><strong>Here's a copy of your message:</strong></p>
+          <hr>
+          <p><strong>Subject:</strong> ${subject}</p>
+          <p>${message.replace(/\n/g, "<br>")}</p>
+          <hr>
+          <br>
+          <p>Best regards,</p>
+          <p>RevivaGreen Team</p>
+        </div>
+      `,
+    });
+
+    // --- Action 3: Send SMS Notification ---
     await twilioClient.messages.create({
-       body: `New RevivaGreen Message!\nFrom: ${name}\nSubject: ${subject}`,
+       body: `RevivaGreen Message!\nFrom: ${name}\nSubject: ${subject}\nMessage: ${message}`,
        from: process.env.TWILIO_PHONE_NUMBER,
        to: process.env.YOUR_PERSONAL_PHONE_NUMBER,
      });
 
-    // --- 3. Send a success response back ---
     return NextResponse.json({ message: 'Message sent successfully!' }, { status: 200 });
-
   } catch (error) {
     console.error("API Route Error:", error);
     return NextResponse.json({ message: 'Failed to send message.' }, { status: 500 });
