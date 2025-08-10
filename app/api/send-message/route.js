@@ -57,7 +57,7 @@ export async function POST(req) {
 
     // --- Action 3: Send SMS Notification ---
     await twilioClient.messages.create({
-       body: `RevivaGreen Message!\nFrom: ${name}\nSubject: ${subject}\nMessage: ${message}`,
+       body: `RevivaGreen Message!\nFrom: ${name}\nEmail: ${email}\nSubject: ${subject}\nMessage: ${message}`,
        from: process.env.TWILIO_PHONE_NUMBER,
        to: process.env.YOUR_PERSONAL_PHONE_NUMBER,
      });
