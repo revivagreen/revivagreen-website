@@ -9,14 +9,14 @@ export default function ProblemStatement() {
           
        
       <div className="container mx-auto">
-        <h2 className="text-4xl text-[#0067ff] md:text-4xl   font-sans-serif font-semibold  text-center mb-12">
+        <h2 className="text-2xl text-[#0067ff] md:text-4xl   font-sans-serif font-semibold  text-center mb-12">
           A Broken System Creates a Shared Challenge
         </h2>
         <div className="flex flex-col md:flex-row justify-center gap-8">
           
           {/* --- START: Households Card (Pink) --- */}
           {/* We're changing 'bg-gray-50' to 'bg-pink-100' */}
-          <div className="md:w-1/2 bg-pink-500 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden flex flex-col">
+          <div className="md:w-1/2 bg-pink-400 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden flex flex-col">
             <div className="relative w-full h-56">
               <Image
                 src="/hou.png"
@@ -27,7 +27,7 @@ export default function ProblemStatement() {
               />
             </div>
             <div className="p-8">
-              <h3 className="text-3xl  font-semibold font-sans-serif text-white mb-3">
+              <h3 className="text-2xl  font-semibold font-sans-serif text-white mb-3">
                 For Households
               </h3>
               <p className="leading-relaxed">
@@ -39,7 +39,7 @@ export default function ProblemStatement() {
 
           {/* --- START: Businesses Card (Yellow) --- */}
           {/* We're changing 'bg-gray-50' to 'bg-yellow-100' */}
-          <div className="md:w-1/2 bg-yellow-500 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden flex flex-col">
+          <div className="md:w-1/2 bg-yellow-400 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden flex flex-col">
             <div className="relative w-full h-56">
               <Image
                 src="/busi.png"
@@ -50,7 +50,7 @@ export default function ProblemStatement() {
               />
             </div>
             <div className="p-8">
-              <h3 className="text-3xl font-semibold font-sans-serif  text-white mb-3">
+              <h3 className="text-2xl font-semibold font-sans-serif  text-white mb-3">
                 For Businesses
               </h3>
               <p className="leading-relaxed">

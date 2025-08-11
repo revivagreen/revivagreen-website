@@ -31,7 +31,7 @@ export default function SolutionTabs() {
   return (
     <section className=" text-black py-20 px-4">
       <div className="container mx-auto">
-        <div className="text-4xl text-[#0067ff] md:text-4xl   font-sans-serif font-semibold  text-center mb-12max-w-4xl mx-auto">
+        <div className="text-2xl text-[#0067ff] md:text-4xl   font-sans-serif font-semibold  text-center mb-12max-w-4xl mx-auto">
             <h2 className="text-4xl  md:text-4xl  mb-6">
             One Platform. A Tailored Experience for You.
             </h2>
@@ -57,7 +57,7 @@ export default function SolutionTabs() {
           {steps.map((step, index) => (
             // We now use a template literal to dynamically add the color class
             <div key={index} className={`${cardColors[index % cardColors.length]} p-6 rounded-lg shadow-md`}>
-              <h3 className="text-3xl font-semibold font-sans-serif text-white mb-2">{step.title}</h3>
+              <h3 className="text-2xl font-semibold font-sans-serif text-white mb-2">{step.title}</h3>
               <p className="text-black leading-relaxed">{step.description}</p>
             </div>
           ))}

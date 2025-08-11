@@ -78,7 +78,7 @@ export default function Navbar() {
         </header>
 
         {/* Mobile Slide-out Menu */}
-        <div className={`fixed top-0 right-0 h-full w-3/4 max-w-sm bg-[#1A3A30] shadow-2xl z-50 transform transition-transform duration-300 ease-in-out ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+        <div className={`fixed top-0 right-0 h-full w-3/4 max-w-sm bg-[#1A3A30] shadow-lg z-50 transform transition-transform duration-300 ease-in-out ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
           <div className="flex justify-end p-4">
             <button onClick={() => setIsMenuOpen(false)} aria-label="Close menu" className="p-2">
               <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">

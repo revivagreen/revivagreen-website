@@ -17,7 +17,7 @@ export default function Hero() {
           {/* --- 4. ATTACH THE REF TO THE ELEMENT --- */}
            <div className="relative bg-[#FED600] text-black rounded-2xl shadow-lg px-12 py-40 mt-32 flex-col items-center justify-start ">
             {/* The heading is now a standard, non-animated h1 tag */}
-             <h1 className="font-sans-serif font-semibold text-5xl md:text-6xl items-start text-center -mt-24 leading-tight">
+             <h1 className="font-sans-serif font-semibold text-4xl md:text-6xl items-start text-center -mt-24 leading-tight">
               Waste is a Resource. We Make it Valuable. For Everyone.
             </h1>
           </div>

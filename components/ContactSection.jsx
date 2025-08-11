@@ -15,7 +15,7 @@ export default function ContactSection() {
         <div className="bg-green-600  max-w-4xl mx-auto p-10 rounded-xl shadow-lg text-center">
           
           {/* Heading */}
-          <h2 className="text-4xl md:text-5xl text-white  mb-4">Have a Question?</h2>
+          <h2 className="text-xl font-semibold md:text-3xl text-white  mb-4">Have a Question?</h2>
           
           {/* Paragraph */}
           <p className="text-lg md:text-xl text-black leading-relaxed mb-12">

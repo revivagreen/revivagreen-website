@@ -16,7 +16,7 @@ const cardColors = [
 const materialsData = [
   { category: "Paper & Cardboard", description: "All types of clean and dry paper, including newspapers, magazines, office paper, and cardboard boxes.", examples: "Examples: Cereal boxes, shipping boxes, junk mail, books.", 
      imageUrl: "/paper.png" },
-  { category: "Plastics", description: "We accept plastic bottles and containers with symbols #1 (PETE) and #2 (HDPE). Please rinse all containers.", examples: "Examples: Water bottles, milk jugs, detergent bottles.", 
+  { category: "Plastics", description: "We accept all types of clean household and commercial plastics. Please ensure items are rinsed and free of food residue to help us recycle them efficiently.", examples: "Examples: Water bottles, food containers, plastic wrap, old toys.", 
       imageUrl: "/plastic1.png" },
   { category: "Glass", description: "Clean glass bottles and jars of all colors. Please remove lids and caps.", examples: "Examples: Beverage bottles, food jars (pickles, sauces).",
        imageUrl: "/glass.png" },
@@ -33,7 +33,7 @@ export default function WhatWeCollectPage() {
     <div className=" text-black pt-26">
       <div className="container mx-auto py-20 px-4">
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xltext-4xl text-[#0067ff] md:text-4xl   font-sans-serif   text-center mb-12max-w-4xl mx-auto font-bold mb-4">What We Collect</h1>
+          <h1 className="text-3xl md:text-5xltext-4xl text-[#0067ff]   font-sans-serif   text-center mb-12max-w-4xl mx-auto font-bold mb-4">What We Collect</h1>
           <p className="text-lg max-w-3xl mx-auto text-[#000000]">We make it easy to recycle a wide variety of materials. Please ensure items are relatively clean to help us process them efficiently.</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

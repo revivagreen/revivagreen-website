@@ -50,7 +50,7 @@ export default function ContactPage() {
     <div className=" text-black pt-26">
       <div className="max-w-2xl mx-auto py-20 px-4">
         <div className="text-center mb-12">
-          <h1 className=" text-[#0067ff] md:text-4xl   font-sans-serif font-semibold  text-center mb-12max-w-4xl mx-auto mb-4">Get In Touch</h1>
+          <h1 className=" text-[#0067ff] md:text-3xl   font-sans-serif font-semibold  text-center mb-12max-w-4xl mx-auto mb-4">Get In Touch</h1>
           <p className="text-lg text-black">
             Have a question, suggestion, or partnership inquiry? We'd love to hear from you.
           </p>

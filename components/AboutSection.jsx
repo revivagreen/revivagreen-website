@@ -26,7 +26,7 @@ export default function AboutSection() {
       <div className="container mx-auto py-20 px-4">
 
         <div className="text-center max-w-4xl mx-auto">
-          <h2 className=" text-4xl text-[#0067ff] md:text-4xl   font-sans-serif font-semibold  text-center mb-12max-w-4xl mx-auto  mb-4">Our Mission</h2>
+          <h2 className=" text-2xl text-[#0067ff] md:text-4xl   font-sans-serif font-semibold  text-center mb-12max-w-4xl mx-auto  mb-4">Our Mission</h2>
           <p className="text-lg md:text-xl text-black leading-relaxed  mb-12">
             To revolutionize waste management by creating a transparent, profitable, and sustainable ecosystem for both households and businesses.
           </p>
@@ -37,7 +37,7 @@ export default function AboutSection() {
           {valuesData.map((value) => (
             // We now use a template literal to dynamically add the color from our data
             <div key={value.title} className={`${value.color} p-8 rounded-xl shadow-sm hover:shadow-xl transition-shadow duration-300`}>
-              <h3 className="text-3xl  font-semibold font-sans-serif text-white mb-3">{value.title}</h3>
+              <h3 className="text-2xl  font-semibold font-sans-serif text-white mb-3">{value.title}</h3>
               <p className="text-black ">{value.description}</p>
             </div>
           ))}
