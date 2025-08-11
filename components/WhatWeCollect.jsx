@@ -20,7 +20,7 @@ export default function WhatWeCollect() {
     <div className=" text-black">
       <div className="container mx-auto py-20 px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl  md:text-5xltext-4xl text-[#0067ff] md:text-4xl   font-sans-serif font-semibold  text-center mb-12max-w-4xl mx-auto   mb-4">
+          <h2 className="text-lg  text-[#0067ff] md:text-4xl   font-sans-serif font-semibold  text-center mb-12max-w-4xl mx-auto   mb-4">
             What We Collect
           </h2>
           <p className="text-lg max-w-3xl mx-auto text-black">
