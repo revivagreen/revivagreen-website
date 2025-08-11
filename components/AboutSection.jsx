@@ -46,7 +46,7 @@ export default function AboutSection() {
 
         <div className="text-center mt-16">
           <Link href="/about">
-            <button className="border-2 bg-[#66ff4a] border-black hover:bg-white hover:text-black text-black font-semibold font-sans-serif py-3 px-8 rounded-lg text-lg transition-colors">
+            <button className="border-2 bg-[#ffaa1d] border-black hover:bg-white hover:text-black text-black font-semibold font-sans-serif py-3 px-8 rounded-lg text-lg transition-colors">
               Learn More About Us
             </button>
           </Link>
