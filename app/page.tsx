@@ -1,14 +1,16 @@
 import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
+import ClientStrip from '@/components/ClientStrip'
+import Problem from '@/components/Problem'
 
 export default function HomePage() {
   return (
     <main>
       <Navbar />
       <Hero />
-      {/* Next sections will be added here one by one:
-          <ClientStrip />
-          <Problem />
+      <ClientStrip />
+      <Problem />
+      {/* Next sections coming soon:
           <Solution />
           <HowItWorks />
           <ImpactStats />
