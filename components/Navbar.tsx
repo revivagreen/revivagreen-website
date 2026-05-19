@@ -56,8 +56,8 @@ export default function Navbar() {
             <img
               src="/logo.svg"
               alt="RevivaGreen"
-              width={36}
-              height={36}
+              width={45}
+              height={45}
               style={{ objectFit: 'contain' }}
             />
             <span
