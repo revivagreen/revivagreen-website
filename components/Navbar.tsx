@@ -45,22 +45,29 @@ export default function Navbar() {
 
   return (
     <>
+      {/* ── DESKTOP NAV ─────────────────────────────────── */}
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-[250ms] ease-in-out ${navBg} ${py}`}
       >
         <div className="container flex items-center gap-8">
 
+          {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5 shrink-0 min-w-[140px]">
-            <LogoMark />
+            <img
+              src="/logo.svg"
+              alt="RevivaGreen"
+              width={36}
+              height={36}
+              style={{ objectFit: 'contain' }}
+            />
             <span
-              className={`text-[18px] font-semibold tracking-[-0.02em] transition-colors duration-[250ms] ${
-                scrolled ? 'text-[#0A1F14]' : 'text-white'
-              }`}
+              className="text-[18px] font-semibold tracking-[-0.02em] text-[#1D9E75] transition-colors duration-[250ms]"
             >
-              Reviva<span className="text-[#1D9E75]">Green</span>
+              RevivaGreen
             </span>
           </Link>
 
+          {/* Desktop links */}
           <nav className="hidden lg:flex items-center gap-8 ml-auto">
             {NAV_LINKS.map((link) =>
               link.dropdown ? (
@@ -118,6 +125,7 @@ export default function Navbar() {
             )}
           </nav>
 
+          {/* CTA button */}
           <Link
             href="/contact"
             className="hidden lg:inline-flex btn-primary ml-4 !py-[10px] !px-5 text-[14px]"
@@ -125,6 +133,7 @@ export default function Navbar() {
             Request a demo
           </Link>
 
+          {/* Mobile hamburger */}
           <button
             onClick={() => setMobileOpen(true)}
             aria-label="Open navigation menu"
@@ -140,9 +149,11 @@ export default function Navbar() {
         </div>
       </header>
 
+      {/* ── MOBILE DRAWER ───────────────────────────────── */}
       <AnimatePresence>
         {mobileOpen && (
           <>
+            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -152,6 +163,7 @@ export default function Navbar() {
               onClick={() => setMobileOpen(false)}
             />
 
+            {/* Drawer */}
             <motion.div
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
@@ -159,15 +171,22 @@ export default function Navbar() {
               transition={{ type: 'tween', duration: 0.28, ease: 'easeInOut' }}
               className="fixed top-0 right-0 bottom-0 z-[70] w-full max-w-sm bg-[#0A1F14] flex flex-col lg:hidden"
             >
+              {/* Drawer header */}
               <div className="flex items-center justify-between px-6 py-5 border-b border-white/[0.08]">
                 <Link
                   href="/"
                   onClick={() => setMobileOpen(false)}
                   className="flex items-center gap-2.5"
                 >
-                  <LogoMark />
-                  <span className="text-[18px] font-semibold text-white tracking-[-0.02em]">
-                    Reviva<span className="text-[#1D9E75]">Green</span>
+                  <img
+                    src="/logo.svg"
+                    alt="RevivaGreen"
+                    width={32}
+                    height={32}
+                    style={{ objectFit: 'contain' }}
+                  />
+                  <span className="text-[18px] font-semibold text-[#1D9E75] tracking-[-0.02em]">
+                    RevivaGreen
                   </span>
                 </Link>
                 <button
@@ -181,6 +200,7 @@ export default function Navbar() {
                 </button>
               </div>
 
+              {/* Drawer links */}
               <nav className="flex flex-col px-6 py-8 gap-1 flex-1 overflow-y-auto">
                 {NAV_LINKS.map((link) => (
                   <div key={link.label}>
@@ -209,6 +229,7 @@ export default function Navbar() {
                 ))}
               </nav>
 
+              {/* Drawer CTA */}
               <div className="px-6 pb-8 pt-4 border-t border-white/[0.08]">
                 <Link
                   href="/contact"
@@ -223,15 +244,5 @@ export default function Navbar() {
         )}
       </AnimatePresence>
     </>
-  )
-}
-
-function LogoMark() {
-  return (
-    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-      <rect width="32" height="32" rx="8" fill="#1D9E75" />
-      <path d="M16 7C16 7 9 12.5 9 18.5C9 22.09 12.13 25 16 25C19.87 25 23 22.09 23 18.5C23 12.5 16 7 16 7Z" fill="white" fillOpacity="0.95" />
-      <path d="M16 13C16 13 12 16.25 12 19C12 21.21 13.79 23 16 23C18.21 23 20 21.21 20 19C20 16.25 16 13 16 13Z" fill="#0A1F14" fillOpacity="0.7" />
-    </svg>
   )
 }
