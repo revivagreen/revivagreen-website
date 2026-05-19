@@ -2,6 +2,8 @@ import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
 import ClientStrip from '@/components/ClientStrip'
 import Problem from '@/components/Problem'
+import Solution from '@/components/Solution'
+import HowItWorks from '@/components/HowItWorks'
 
 export default function HomePage() {
   return (
@@ -10,9 +12,9 @@ export default function HomePage() {
       <Hero />
       <ClientStrip />
       <Problem />
+      <Solution />
+      <HowItWorks />
       {/* Next sections coming soon:
-          <Solution />
-          <HowItWorks />
           <ImpactStats />
           <Testimonials />
           <EsgSnapshot />
