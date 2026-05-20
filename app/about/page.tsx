@@ -19,14 +19,14 @@ const TEAM = [
     // photo: '/images/team/surendra.jpg',
   },
   {
-    name: 'Ragini Surendra Pamulapati',
+    name: 'Ragini Pamulapati',
     role: 'Co-Founder & Director',
     bio: 'Oversees all financial operations, compliance documentation, and regulatory filings for RevivaGreen Ventures. Responsible for verifying all registration numbers and statutory disclosures.',
     initials: 'RS',
     // photo: '/images/team/tulasi.jpg',
   },
   {
-    name: 'Bharat',
+    name: 'Bharat Reddy Guntaka',
     role: 'Head of Operations',
     bio: "Oversees RevivaGreen's on-ground operations across Andhra Pradesh — from pickup scheduling and MRF management to driver training and client service quality. Her focus: every client's experience must be identical, professional, and reliable regardless of which branch or district.",
     initials: 'BR',

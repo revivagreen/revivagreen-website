@@ -1,34 +1,34 @@
 import Link from 'next/link'
 
-// ── UPDATE THESE WITH REAL REGISTRATION NUMBERS (verify with Tulasi first) ──
 const REGISTRATION = {
-  gstin:  'GSTIN: 37AAOCR8130R1ZG',         // ← replace with real GSTIN
-  cin:    'CIN: U38120AP2025PTC120216',       // ← replace with real CIN
-  dpiit:  'DPIIT: DIPP212171',                // ← replace with real DPIIT number
-  msme:   'MSME: UDYAM-AP-06-0101707',       // ← replace with real MSME Udyam number
-  //appcb:  'APPCB CFE Ref: APPCB/2024/XXXXX', // ← replace with real APPCB reference
+  gstin: 'GSTIN: 37AAOCR8130R1ZG',
+  cin:   'CIN: U38120AP2025PTC120216',
+  dpiit: 'DPIIT: DIPP212171',
+  msme:  'MSME: UDYAM-AP-06-0101707',
 }
 
+const WHATSAPP = 'https://wa.me/918500626999?text=Hi%20RevivaGreen%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services'
+
 const SERVICES_LINKS = [
-  { label: 'GST-Compliant Recovery',  href: '/services/recovery' },
-  { label: 'ESG Data & BRSR',         href: '/services/esg'      },
-  { label: 'EPR Compliance',          href: '/services/epr'      },
-  { label: 'B2B Dashboard',           href: '/platform'          },
+  { label: 'GST-Compliant Recovery', href: '/services#recovery' },
+  { label: 'ESG Data & BRSR',        href: '/services#esg'      },
+  { label: 'EPR Compliance',         href: '/services#epr'      },
+  { label: 'B2B Dashboard',          href: '/platform'          },
 ]
 
 const COMPANY_LINKS = [
-  { label: 'About us',   href: '/about'    },
-  { label: 'Our team',   href: '/about'    },
-  { label: 'Clients',    href: '/clients'  },
-  { label: 'Insights',   href: '/insights' },
-  { label: 'Careers',    href: '/careers'  },
-  { label: 'Contact',    href: '/contact'  },
+  { label: 'About us',  href: '/about'    },
+  { label: 'Our team',  href: '/about'    },
+  { label: 'Clients',   href: '/clients'  },
+  { label: 'Insights',  href: '/insights' },
+  { label: 'Careers',   href: '/careers'  },
+  { label: 'Contact',   href: '/contact'  },
 ]
 
 const LEGAL_LINKS = [
-  { label: 'Privacy policy', href: '/privacy'  },
+  { label: 'Privacy policy',  href: '/privacy' },
   { label: 'Terms of service', href: '/terms'  },
-  { label: 'Cookie policy',  href: '/cookies'  },
+  { label: 'Cookie policy',   href: '/cookies' },
 ]
 
 export default function Footer() {
@@ -42,49 +42,30 @@ export default function Footer() {
           {/* Column 1 — Brand */}
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-2.5 mb-4">
-              <img
-                src="/logo.svg"
-                alt="RevivaGreen"
-                width={32}
-                height={32}
-                style={{ objectFit: 'contain' }}
-              />
+              <img src="/logo.svg" alt="RevivaGreen" width={32} height={32} style={{ objectFit: 'contain' }} />
               <span className="text-[17px] font-semibold text-[#1D9E75] tracking-[-0.02em]">
                 RevivaGreen
               </span>
             </Link>
-            <p className="text-white/50 text-[14px] leading-[1.7] max-w-[240px] mb-6">
+            <p className="text-white/50 text-[14px] leading-[1.7] max-w-[240px] mb-2">
               Andhra Pradesh&apos;s first B2B compliance-grade circular economy platform.
-              GST-documented. ESG-ready. APPCB certified.
+              GST-documented. ESG-ready. DPIIT recognised.
+            </p>
+            <p className="text-white/30 text-[13px] leading-[1.6] max-w-[240px] mb-6">
+              2-117, 1 Doctor Road, Ganapavaram<br />
+              Mylavaram, NTR District, AP — 521230<br />
+              +91 85006 26999
             </p>
 
             {/* Social icons */}
             <div className="flex items-center gap-4">
-              <a
-                href="https://linkedin.com/company/revivagreen"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="RevivaGreen on LinkedIn"
-                className="text-white/40 hover:text-[#1D9E75] transition-colors duration-200"
-              >
+              <a href="https://linkedin.com/company/revivagreen" target="_blank" rel="noopener noreferrer" aria-label="RevivaGreen on LinkedIn" className="text-white/40 hover:text-[#1D9E75] transition-colors duration-200">
                 <LinkedInIcon />
               </a>
-              <a
-                href="https://instagram.com/revivagreen.in"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="RevivaGreen on Instagram"
-                className="text-white/40 hover:text-[#1D9E75] transition-colors duration-200"
-              >
+              <a href="https://instagram.com/revivagreen.in" target="_blank" rel="noopener noreferrer" aria-label="RevivaGreen on Instagram" className="text-white/40 hover:text-[#1D9E75] transition-colors duration-200">
                 <InstagramIcon />
               </a>
-              <a
-                href="https://twitter.com/revivagreen"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="RevivaGreen on X (Twitter)"
-                className="text-white/40 hover:text-[#1D9E75] transition-colors duration-200"
-              >
+              <a href="https://twitter.com/revivagreen" target="_blank" rel="noopener noreferrer" aria-label="RevivaGreen on X (Twitter)" className="text-white/40 hover:text-[#1D9E75] transition-colors duration-200">
                 <XIcon />
               </a>
             </div>
@@ -108,10 +89,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {SERVICES_LINKS.map((link) => (
                 <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-white/50 hover:text-[#1D9E75] text-[14px] transition-colors duration-200"
-                  >
+                  <Link href={link.href} className="text-white/50 hover:text-[#1D9E75] text-[14px] transition-colors duration-200">
                     {link.label}
                   </Link>
                 </li>
@@ -127,10 +105,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {COMPANY_LINKS.map((link) => (
                 <li key={link.label}>
-                  <Link
-                    href={link.href}
-                    className="text-white/50 hover:text-[#1D9E75] text-[14px] transition-colors duration-200"
-                  >
+                  <Link href={link.href} className="text-white/50 hover:text-[#1D9E75] text-[14px] transition-colors duration-200">
                     {link.label}
                   </Link>
                 </li>
@@ -146,10 +121,7 @@ export default function Footer() {
             <ul className="space-y-3 mb-8">
               {LEGAL_LINKS.map((link) => (
                 <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-white/50 hover:text-[#1D9E75] text-[14px] transition-colors duration-200"
-                  >
+                  <Link href={link.href} className="text-white/50 hover:text-[#1D9E75] text-[14px] transition-colors duration-200">
                     {link.label}
                   </Link>
                 </li>
@@ -159,14 +131,14 @@ export default function Footer() {
             <h3 className="text-white/80 text-[12px] font-semibold uppercase tracking-[0.1em] mb-3">
               Contact
             </h3>
-            <a
-              href="mailto:info@revivagreen.com"
-              className="text-white/50 hover:text-[#1D9E75] text-[14px] transition-colors duration-200 block mb-2"
-            >
+            <a href="mailto:info@revivagreen.com" className="text-white/50 hover:text-[#1D9E75] text-[14px] transition-colors duration-200 block mb-2">
               info@revivagreen.com
             </a>
+            <a href="tel:+918500626999" className="text-white/50 hover:text-[#1D9E75] text-[14px] transition-colors duration-200 block mb-2">
+              +91 85006 26999
+            </a>
             <a
-              href="https://wa.me/918500626999?text=Hi%20RevivaGreen%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services"
+              href={WHATSAPP}
               target="_blank"
               rel="noopener noreferrer"
               className="text-white/50 hover:text-[#1D9E75] text-[14px] transition-colors duration-200 flex items-center gap-1.5"
@@ -186,13 +158,9 @@ export default function Footer() {
       <div className="border-t border-white/[0.08]">
         <div className="container py-6">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-
-            {/* Copyright */}
             <p className="text-white/30 text-[13px]">
               © {new Date().getFullYear()} RevivaGreen Ventures Private Limited. All rights reserved.
             </p>
-
-            {/* Registration numbers */}
             <div className="flex flex-wrap gap-x-4 gap-y-1">
               {Object.values(REGISTRATION).map((reg) => (
                 <span key={reg} className="text-white/25 text-[11px] font-mono">
@@ -200,14 +168,13 @@ export default function Footer() {
                 </span>
               ))}
             </div>
-
           </div>
         </div>
       </div>
 
       {/* ── WHATSAPP FLOATING BUTTON ─────────────────────── */}
       <a
-        href="https://wa.me/918500626999?text=Hi%20RevivaGreen%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services"
+        href={WHATSAPP}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat with RevivaGreen on WhatsApp"
@@ -223,7 +190,6 @@ export default function Footer() {
   )
 }
 
-/* ── SOCIAL ICONS ───────────────────────────────────────────── */
 function LinkedInIcon() {
   return (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -232,7 +198,6 @@ function LinkedInIcon() {
     </svg>
   )
 }
-
 function InstagramIcon() {
   return (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -242,7 +207,6 @@ function InstagramIcon() {
     </svg>
   )
 }
-
 function XIcon() {
   return (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
