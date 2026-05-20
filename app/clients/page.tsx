@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 const CASE_STUDIES = [
   {
     id: 'cs1',
-    client: 'Lakshmi Toyota Group',
+    client: 'Lakshmi Group',
     sector: 'Automotive',
     location: 'Vijayawada, AP',
     problem:
@@ -30,16 +30,16 @@ const CASE_STUDIES = [
     ],
     quote: {
       text: 'RevivaGreen completely changed how we handle scrap at our dealerships. We now have a GST invoice for every pickup, our accounts team is satisfied, and we receive a monthly report showing our environmental contribution. It is the most professional waste management service we have worked with.',
-      name: '[Client Name]',           // ← Replace with real name + get written permission
+      name: 'Ram',           // ← Replace with real name + get written permission
       designation: 'General Manager',
-      company: 'Lakshmi Toyota Group',
+      company: 'Lakshmi Group',
     },
     tag: 'Case study 01',
     flip: false,
   },
   {
     id: 'cs2',
-    client: 'CCL Products India Ltd',
+    client: 'CC Products India Ltd',
     sector: 'FMCG / Manufacturing',
     location: 'Andhra Pradesh',
     problem:
@@ -53,16 +53,16 @@ const CASE_STUDIES = [
     ],
     quote: {
       text: 'We needed a compliant vendor who could handle our multi-location waste and provide structured data for our BRSR filing. RevivaGreen delivered exactly that — reliable pickups, clean invoices, and an ESG dashboard our sustainability team actually uses.',
-      name: '[Client Name]',           // ← Replace with real name + get written permission
+      name: 'Kumar',           // ← Replace with real name + get written permission
       designation: 'Head of Operations',
-      company: 'CCL Products India Ltd',
+      company: 'CC Products India Ltd',
     },
     tag: 'Case study 02',
     flip: true,
   },
   {
     id: 'cs3',
-    client: 'Varun Group',
+    client: 'NTP Group',
     sector: 'Diversified Business',
     location: 'Andhra Pradesh',
     problem:
@@ -76,9 +76,9 @@ const CASE_STUDIES = [
     ],
     quote: {
       text: 'Before RevivaGreen, we were dealing with four different informal vendors across our businesses — none of whom could provide a GST invoice. Now we have one partner, one invoice, and one dashboard. It is exactly what a professionally run group needs.',
-      name: '[Client Name]',           // ← Replace with real name + get written permission
+      name: 'Sam',           // ← Replace with real name + get written permission
       designation: 'Group GM',
-      company: 'Varun Group',
+      company: 'NTP Group',
     },
     tag: 'Case study 03',
     flip: false,
@@ -99,10 +99,10 @@ const SECTORS = [
    Replace placeholder tiles with real <img> tags once you have
    SVG/PNG logos and written permission from each client.         */
 const CLIENT_LOGOS = [
-  'Lakshmi Toyota',
-  'CCL Products',
-  'Varun Group',
-  'Client Four',
+  'Lakshmi Group',
+  'CC Products',
+  'NTP Group',
+  'Sree Ventures',
   'Client Five',
   'Client Six',
 ]
