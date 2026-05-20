@@ -86,7 +86,7 @@ export default function ContactPage() {
                 <div className="bg-white border border-[#D3D1C7] rounded-2xl p-8">
                   <div className="space-y-5">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                      <FormField id="demo-company"   label="Company name"        type="text"   placeholder="Lakshmi Toyota Group"    required />
+                      <FormField id="demo-company"   label="Company name"        type="text"   placeholder="LL Group"    required />
                       <FormField id="demo-locations" label="Number of locations" type="number" placeholder="e.g. 3"                  required />
                     </div>
                     <FormField id="demo-city"  label="Primary city"       type="text"  placeholder="e.g. Vijayawada"              required />
