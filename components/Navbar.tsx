@@ -27,10 +27,17 @@ export default function Navbar() {
   const [dropdownOpen, setDropdownOpen] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 80)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+  // Pages with light heroes need solid nav from the start
+  const lightHeroPages = ['/insights', '/about']
+  const isLightPage = lightHeroPages.some((p) =>
+    window.location.pathname.startsWith(p)
+  )
+  if (isLightPage) setScrolled(true)
+
+  const onScroll = () => setScrolled(window.scrollY > 80)
+  window.addEventListener('scroll', onScroll, { passive: true })
+  return () => window.removeEventListener('scroll', onScroll)
+}, [])
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? 'hidden' : ''
