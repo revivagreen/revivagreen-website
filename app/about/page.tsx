@@ -20,14 +20,14 @@ const TEAM = [
     // photo: '/images/team/surendra.jpg',
   },
   {
-    name: 'Tulasi Pamulapati',
+    name: 'Ragini Surendra Pamulapati',
     role: 'Co-Founder & CFO',
     bio: 'Oversees financial operations, compliance documentation, and all regulatory filings for RevivaGreen Ventures.',
-    initials: 'TP',
+    initials: 'RS',
     // photo: '/images/team/tulasi.jpg',
   },
   {
-    name: 'Ragini',
+    name: 'Bharat',
     role: 'Operations Lead',
     bio: 'Manages field operations, MRF facility coordination, and client pickup scheduling across all districts.',
     initials: 'RG',
@@ -41,25 +41,25 @@ const TEAM = [
 const CERTIFICATIONS = [
   {
     name: 'DPIIT Recognition',
-    number: 'DIPP12345',           // ← replace with real number
+    number: 'DIPP212171',           // ← replace with real number
     description: 'Recognised by the Department for Promotion of Industry and Internal Trade, Government of India.',
     color: '#C8A84B',
   },
   {
     name: 'MSME Udyam',
-    number: 'UDYAM-AP-00-0000000', // ← replace with real number
+    number: 'UDYAM-AP-06-0101707', // ← replace with real number
     description: 'Registered under the Ministry of Micro, Small and Medium Enterprises, Government of India.',
     color: '#C8A84B',
   },
-  {
-    name: 'APPCB Certified',
-    number: 'APPCB/2024/XXXXX',    // ← replace with real number
-    description: 'Consent to Establish and Operate issued by the Andhra Pradesh Pollution Control Board.',
-    color: '#1D9E75',
-  },
+ // {
+  //  name: 'APPCB Certified',
+    //number: 'APPCB/2024/XXXXX',    // ← replace with real number
+    //description: 'Consent to Establish and Operate issued by the Andhra Pradesh Pollution Control Board.',
+    //color: '#1D9E75',
+  //},
   {
     name: 'GST Registered',
-    number: '37AABCR1234F1ZP',     // ← replace with real GSTIN
+    number: '37AAOCR8130R1ZG',     // ← replace with real GSTIN
     description: 'Fully GST-registered entity. Every transaction is documented and compliant with Indian tax law.',
     color: '#1D9E75',
   },
@@ -69,17 +69,17 @@ const CERTIFICATIONS = [
 // Update milestones as the company grows
 const TIMELINE = [
   {
-    year: '2023',
+    year: 'Jun 2025',
     title: 'RevivaGreen founded',
     description: 'Surendra registers RevivaGreen Ventures Private Limited in Vijayawada with a mission to formalise waste management in AP.',
   },
   {
-    year: '2024',
+    year: 'Oct 2025',
     title: 'First B2B client',
     description: 'Signs first formal B2B waste management contract with a leading automotive dealership group in Vijayawada.',
   },
   {
-    year: '2024',
+    year: 'Nov 2025',
     title: 'MRF facility opens',
     description: 'Material Recovery Facility inaugurated — the operational backbone for sorting, weighing, and channelling recyclables.',
   },
