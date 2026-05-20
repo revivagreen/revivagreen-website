@@ -147,15 +147,15 @@ export default function ServicesPage() {
             needs of AP businesses that take waste management seriously.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
-            <Link href="#recovery" className="btn-primary">
+            <a href="#recovery" className="btn-primary">
               Resource Recovery
-            </Link>
-            <Link href="#esg" className="btn-outline-white">
+            </a>
+            <a href="#esg" className="btn-outline-white">
               ESG Reporting
-            </Link>
-            <Link href="#epr" className="btn-outline-white">
+            </a>
+            <a href="#epr" className="btn-outline-white">
               EPR Compliance
-            </Link>
+            </a>
           </div>
         </div>
       </section>

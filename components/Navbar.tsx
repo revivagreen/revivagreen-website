@@ -9,9 +9,9 @@ const NAV_LINKS = [
     label: 'Services',
     href: '/services',
     dropdown: [
-      { label: 'GST-Compliant Resource Recovery', href: '/services/recovery' },
-      { label: 'ESG Data & BRSR Reporting',       href: '/services/esg'      },
-      { label: 'EPR Compliance Management',        href: '/services/epr'      },
+      { label: 'GST-Compliant Resource Recovery', href: '/services#recovery' },
+      { label: 'ESG Data & BRSR Reporting',       href: '/services#esg'      },
+      { label: 'EPR Compliance Management',        href: '/services#epr'      },
     ],
   },
   { label: 'Platform',   href: '/platform'  },
