@@ -51,6 +51,9 @@ export default function Footer() {
               Andhra Pradesh&apos;s first B2B compliance-grade circular economy platform.
               GST-documented. ESG-ready. DPIIT recognised.
             </p>
+            <p className="text-[#1D9E75]/60 text-[13px] font-medium tracking-[0.04em] mb-6">
+  Connecting Communities. Future-Proofing Our Planet.
+</p>
             <p className="text-white/30 text-[13px] leading-[1.6] max-w-[240px] mb-6">
               2-117, 1 Doctor Road, Ganapavaram<br />
               Mylavaram, NTR District, AP — 521230<br />

@@ -87,6 +87,16 @@ export default function Hero() {
           compliance platform
         </motion.h1>
 
+        <motion.p
+  className="text-[#1D9E75]/70 text-[15px] font-medium tracking-[0.06em] uppercase mt-4"
+  variants={fadeUp}
+  initial="hidden"
+  animate="show"
+  transition={{ duration: 0.6, ease: 'easeOut', delay: 0.25 }}
+>
+  Connecting Communities. Future-Proofing Our Planet.
+</motion.p>
+
         {/* Sub-headline */}
         <motion.p
           className="mt-6 text-white/65 text-[18px] leading-[1.7] max-w-[580px] mx-auto"
