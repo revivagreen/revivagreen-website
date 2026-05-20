@@ -208,9 +208,9 @@ export default function AboutPage() {
               {/* Quick stats */}
               <div className="grid grid-cols-3 gap-4">
                 {[
-                  { value: '2023', label: 'Founded'         },
+                  { value: '2025', label: 'Founded'         },
                   { value: '6',    label: 'Districts'       },
-                  { value: '100+', label: 'B2B clients'     },
+                  { value: '50+', label: 'B2B clients'     },
                 ].map((s) => (
                   <div key={s.label} className="bg-[#0A1F14] rounded-xl p-4 text-center">
                     <span className="block text-[28px] font-semibold text-[#1D9E75] leading-none tabular-nums">

@@ -30,7 +30,7 @@ function useCountUp(target: number, duration = 2000, active = false) {
 /* ── STATS DATA — update these numbers monthly ─────────────── */
 const STATS = [
   { value: 500,  suffix: '+',  label: 'Tonnes Recovered',    'data-target': 500  },
-  { value: 100,  suffix: '+',  label: 'Active B2B Clients',  'data-target': 100  },
+  { value: 50,  suffix: '+',  label: 'Active B2B Clients',  'data-target': 50  },
   { value: 6,    suffix: '',   label: 'Districts Covered',   'data-target': 6    },
 ]
 
