@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import CookieBanner from '@/components/CookieBanner'
+import GoogleAnalytics from '@/components/GoogleAnalytics'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -34,7 +35,8 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'RevivaGreen | GST-Compliant Waste Management & ESG Platform',
-    description: "India's first B2B compliance-grade waste management platform for Andhra Pradesh.",
+    description:
+      "India's first B2B compliance-grade waste management platform for Andhra Pradesh.",
   },
   robots: {
     index: true,
@@ -51,6 +53,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <GoogleAnalytics />
         {children}
         <CookieBanner />
       </body>
