@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const NAV_LINKS = [
@@ -21,34 +22,40 @@ const NAV_LINKS = [
   { label: 'Contact',    href: '/contact'   },
 ]
 
+// Pages with light hero — navbar starts solid white immediately
+const LIGHT_HERO_PAGES = ['/insights', '/about', '/careers', '/privacy', '/terms', '/cookies']
+
 export default function Navbar() {
+  const pathname                        = usePathname()
   const [scrolled,     setScrolled]     = useState(false)
   const [mobileOpen,   setMobileOpen]   = useState(false)
   const [dropdownOpen, setDropdownOpen] = useState(false)
 
-  useEffect(() => {
-  // Pages with light heroes need solid nav from the start
-  const lightHeroPages = ['/insights', '/about']
-  const isLightPage = lightHeroPages.some((p) =>
-    window.location.pathname.startsWith(p)
-  )
-  if (isLightPage) setScrolled(true)
+  const isLightPage = LIGHT_HERO_PAGES.some((p) => pathname.startsWith(p))
 
-  const onScroll = () => setScrolled(window.scrollY > 80)
-  window.addEventListener('scroll', onScroll, { passive: true })
-  return () => window.removeEventListener('scroll', onScroll)
-}, [])
+  useEffect(() => {
+    if (isLightPage) setScrolled(true)
+    const onScroll = () => setScrolled(window.scrollY > 80)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [isLightPage])
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
   }, [mobileOpen])
 
+  // Close mobile drawer on route change
+  useEffect(() => { setMobileOpen(false) }, [pathname])
+
   const navBg     = scrolled ? 'bg-white shadow-[0_1px_0_#D3D1C7]' : 'bg-transparent'
-  const linkColor = scrolled
-    ? 'text-[#1A1A1A] hover:text-[#1D9E75]'
-    : 'text-white/75 hover:text-white'
-  const py = scrolled ? 'py-4' : 'py-7'
+  const linkColor = scrolled ? 'text-[#1A1A1A]' : 'text-white/75'
+  const py        = scrolled ? 'py-4' : 'py-7'
+
+  const isActive = (href: string) => {
+    if (href === '/') return pathname === '/'
+    return pathname.startsWith(href.split('#')[0])
+  }
 
   return (
     <>
@@ -63,19 +70,17 @@ export default function Navbar() {
             <img
               src="/logo.svg"
               alt="RevivaGreen"
-              width={45}
-              height={45}
+              width={36}
+              height={36}
               style={{ objectFit: 'contain' }}
             />
-            <span
-              className="text-[18px] font-semibold tracking-[-0.02em] text-[#1D9E75] transition-colors duration-[250ms]"
-            >
+            <span className="text-[18px] font-semibold tracking-[-0.02em] text-[#1D9E75] transition-colors duration-[250ms]">
               RevivaGreen
             </span>
           </Link>
 
           {/* Desktop links */}
-          <nav className="hidden lg:flex items-center gap-8 ml-auto">
+          <nav className="hidden lg:flex items-center gap-8 ml-auto" aria-label="Main navigation">
             {NAV_LINKS.map((link) =>
               link.dropdown ? (
                 <div
@@ -85,7 +90,13 @@ export default function Navbar() {
                   onMouseLeave={() => setDropdownOpen(false)}
                 >
                   <button
-                    className={`flex items-center gap-1 text-[15px] font-medium transition-colors duration-200 bg-transparent border-none cursor-pointer ${linkColor}`}
+                    className={`flex items-center gap-1 text-[15px] font-medium transition-colors duration-200 bg-transparent border-none cursor-pointer ${
+                      isActive(link.href)
+                        ? 'text-[#1D9E75] underline underline-offset-4 decoration-[#1D9E75] decoration-[1.5px]'
+                        : `${linkColor} hover:text-[#1D9E75]`
+                    }`}
+                    aria-expanded={dropdownOpen}
+                    aria-haspopup="true"
                   >
                     {link.label}
                     <svg
@@ -106,12 +117,14 @@ export default function Navbar() {
                         exit={{ opacity: 0, y: -6 }}
                         transition={{ duration: 0.18 }}
                         className="absolute top-[calc(100%+12px)] left-1/2 -translate-x-1/2 bg-white border border-[#D3D1C7] rounded-lg py-2 min-w-[260px] shadow-[0_8px_24px_rgba(0,0,0,0.12)]"
+                        role="menu"
                       >
                         {link.dropdown.map((item) => (
                           <Link
                             key={item.href}
                             href={item.href}
                             className="block px-4 py-2.5 text-[14px] font-medium text-[#1A1A1A] hover:text-[#1D9E75] hover:bg-[#F5F0E8] transition-colors duration-150"
+                            role="menuitem"
                           >
                             {item.label}
                           </Link>
@@ -124,7 +137,12 @@ export default function Navbar() {
                 <Link
                   key={link.label}
                   href={link.href}
-                  className={`text-[15px] font-medium transition-colors duration-200 ${linkColor}`}
+                  className={`text-[15px] font-medium transition-colors duration-200 ${
+                    isActive(link.href)
+                      ? 'text-[#1D9E75] underline underline-offset-4 decoration-[#1D9E75] decoration-[1.5px]'
+                      : `${linkColor} hover:text-[#1D9E75]`
+                  }`}
+                  aria-current={isActive(link.href) ? 'page' : undefined}
                 >
                   {link.label}
                 </Link>
@@ -144,6 +162,7 @@ export default function Navbar() {
           <button
             onClick={() => setMobileOpen(true)}
             aria-label="Open navigation menu"
+            aria-expanded={mobileOpen}
             className={`lg:hidden ml-auto p-2 transition-colors border-none bg-transparent cursor-pointer ${
               scrolled ? 'text-[#1A1A1A]' : 'text-white'
             }`}
@@ -160,7 +179,6 @@ export default function Navbar() {
       <AnimatePresence>
         {mobileOpen && (
           <>
-            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -168,30 +186,23 @@ export default function Navbar() {
               transition={{ duration: 0.2 }}
               className="fixed inset-0 z-[60] bg-black/50 lg:hidden"
               onClick={() => setMobileOpen(false)}
+              aria-hidden="true"
             />
 
-            {/* Drawer */}
             <motion.div
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'tween', duration: 0.28, ease: 'easeInOut' }}
               className="fixed top-0 right-0 bottom-0 z-[70] w-full max-w-sm bg-[#0A1F14] flex flex-col lg:hidden"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Navigation menu"
             >
               {/* Drawer header */}
               <div className="flex items-center justify-between px-6 py-5 border-b border-white/[0.08]">
-                <Link
-                  href="/"
-                  onClick={() => setMobileOpen(false)}
-                  className="flex items-center gap-2.5"
-                >
-                  <img
-                    src="/logo.svg"
-                    alt="RevivaGreen"
-                    width={32}
-                    height={32}
-                    style={{ objectFit: 'contain' }}
-                  />
+                <Link href="/" className="flex items-center gap-2.5">
+                  <img src="/logo.svg" alt="RevivaGreen" width={32} height={32} style={{ objectFit: 'contain' }} />
                   <span className="text-[18px] font-semibold text-[#1D9E75] tracking-[-0.02em]">
                     RevivaGreen
                   </span>
@@ -213,8 +224,10 @@ export default function Navbar() {
                   <div key={link.label}>
                     <Link
                       href={link.href}
-                      onClick={() => setMobileOpen(false)}
-                      className="block py-3 text-[20px] font-medium text-white/80 hover:text-[#1D9E75] transition-colors border-b border-white/[0.08]"
+                      className={`block py-3 text-[20px] font-medium transition-colors border-b border-white/[0.08] ${
+                        isActive(link.href) ? 'text-[#1D9E75]' : 'text-white/80 hover:text-[#1D9E75]'
+                      }`}
+                      aria-current={isActive(link.href) ? 'page' : undefined}
                     >
                       {link.label}
                     </Link>
@@ -224,7 +237,6 @@ export default function Navbar() {
                           <Link
                             key={item.href}
                             href={item.href}
-                            onClick={() => setMobileOpen(false)}
                             className="block py-2 text-[15px] text-white/50 hover:text-[#1D9E75] transition-colors"
                           >
                             {item.label}
@@ -240,7 +252,6 @@ export default function Navbar() {
               <div className="px-6 pb-8 pt-4 border-t border-white/[0.08]">
                 <Link
                   href="/contact"
-                  onClick={() => setMobileOpen(false)}
                   className="btn-primary w-full justify-center flex text-[15px]"
                 >
                   Request a demo
