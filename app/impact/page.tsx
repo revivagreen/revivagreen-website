@@ -6,12 +6,6 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import Link from 'next/link'
 
-export const metadata = {
-  title: 'ESG Impact Data | RevivaGreen Circular Economy Platform — Andhra Pradesh',
-  description:
-    'Live ESG impact data from RevivaGreen\'s verified waste recovery operations. 400+ tonnes recovered, CO₂ diversion figures, BRSR-aligned reporting, and material breakdown across Andhra Pradesh.',
-}
-
 // ── UPDATE THESE NUMBERS EVERY MONTH ─────────────────────────
 // All figures from Zoho Books procurement tracker · Verified by Tulasi
 const IMPACT_STATS = [
@@ -22,32 +16,29 @@ const IMPACT_STATS = [
 ]
 
 // ── REAL MATERIAL DATA FROM ZOHO BOOKS ───────────────────────
-// Total procured: ~400 tonnes (399,144 kg) since Oct 2025
-// Do NOT publish P&L or revenue figures — impact metrics only
 const MATERIALS = [
-  { label: 'Cardboard / Paper', pct: 35, kg: '1,37,831 kg', color: '#1D9E75'  },
-  { label: 'Iron / Steel',      pct: 11, kg: '44,895 kg',   color: '#5DCAA5'  },
-  { label: 'Plastics (LD)',     pct: 10, kg: '41,180 kg',   color: '#C8A84B'  },
-  { label: 'Glass / Cullet',    pct: 7,  kg: '28,802 kg',   color: '#888780'  },
-  { label: 'PET Bottles',       pct: 4,  kg: '15,803 kg',   color: '#D3D1C7'  },
-  { label: 'Other materials',   pct: 33, kg: '~1,30,633 kg',color: '#2C2C2A'  },
+  { label: 'Cardboard / Paper', pct: 35, kg: '1,37,831 kg',  color: '#1D9E75' },
+  { label: 'Iron / Steel',      pct: 11, kg: '44,895 kg',    color: '#5DCAA5' },
+  { label: 'Plastics (LD)',     pct: 10, kg: '41,180 kg',    color: '#C8A84B' },
+  { label: 'Glass / Cullet',    pct: 7,  kg: '28,802 kg',    color: '#888780' },
+  { label: 'PET Bottles',       pct: 4,  kg: '15,803 kg',    color: '#D3D1C7' },
+  { label: 'Other materials',   pct: 33, kg: '~1,30,633 kg', color: '#2C2C2A' },
 ]
 
 // ── ACTIVE DISTRICTS — confirmed with Surendra ────────────────
-// Krishna, NTR, Guntur, West Godavari (Eluru), Visakhapatnam, East Godavari
 const DISTRICTS_COVERED = [
-  { name: 'Krishna',        active: true  },
-  { name: 'NTR',            active: true  },
-  { name: 'Guntur',         active: true  },
-  { name: 'West Godavari',  active: true  },
-  { name: 'Visakhapatnam',  active: true  },
-  { name: 'East Godavari',  active: true  },
-  { name: 'Prakasam',       active: false },
-  { name: 'Nellore',        active: false },
-  { name: 'Kadapa',         active: false },
-  { name: 'Kurnool',        active: false },
-  { name: 'Srikakulam',     active: false },
-  { name: 'Vizianagaram',   active: false },
+  { name: 'Krishna',       active: true  },
+  { name: 'NTR',           active: true  },
+  { name: 'Guntur',        active: true  },
+  { name: 'West Godavari', active: true  },
+  { name: 'Visakhapatnam', active: true  },
+  { name: 'East Godavari', active: true  },
+  { name: 'Prakasam',      active: false },
+  { name: 'Nellore',       active: false },
+  { name: 'Kadapa',        active: false },
+  { name: 'Kurnool',       active: false },
+  { name: 'Srikakulam',    active: false },
+  { name: 'Vizianagaram',  active: false },
 ]
 
 function useCountUp(target: number, duration = 2000, active = false) {
@@ -107,8 +98,10 @@ export default function ImpactPage() {
         <div className="container">
           <motion.div
             className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-14"
-            initial="hidden" animate={statsInView ? 'show' : 'hidden'}
-            variants={fadeUp} transition={{ duration: 0.6, ease: 'easeOut' }}
+            initial="hidden"
+            animate={statsInView ? 'show' : 'hidden'}
+            variants={fadeUp}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
           >
             <div>
               <p className="eyebrow mb-3">Live impact data</p>
@@ -127,8 +120,10 @@ export default function ImpactPage() {
 
           <motion.div
             className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 bg-[#0A1F14] border border-white/[0.08] rounded-xl px-6 py-5"
-            initial="hidden" animate={statsInView ? 'show' : 'hidden'}
-            variants={fadeUp} transition={{ duration: 0.6, ease: 'easeOut', delay: 0.5 }}
+            initial="hidden"
+            animate={statsInView ? 'show' : 'hidden'}
+            variants={fadeUp}
+            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.5 }}
           >
             <div>
               <p className="text-white font-medium text-[15px]">
@@ -136,7 +131,6 @@ export default function ImpactPage() {
               </p>
               <p className="text-white/40 text-[13px] mt-0.5">PDF · BRSR-aligned · Auditor-ready</p>
             </div>
-            {/* Replace href with real Google Drive link once Tulasi uploads PDF */}
             <a href="#" className="btn-primary shrink-0 text-[14px]" aria-label="Download ESG impact report PDF">
               Download PDF ↓
             </a>
@@ -144,10 +138,13 @@ export default function ImpactPage() {
 
           <motion.p
             className="mt-4 text-white/25 text-[12px] text-center"
-            initial="hidden" animate={statsInView ? 'show' : 'hidden'}
-            variants={fadeUp} transition={{ duration: 0.6, ease: 'easeOut', delay: 0.6 }}
+            initial="hidden"
+            animate={statsInView ? 'show' : 'hidden'}
+            variants={fadeUp}
+            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.6 }}
           >
-            All figures sourced from Zoho Books transaction records. Updated monthly. Not independently audited unless specifically noted.
+            All figures sourced from Zoho Books transaction records. Updated monthly.
+            Not independently audited unless specifically noted.
           </motion.p>
         </div>
       </section>
@@ -157,8 +154,10 @@ export default function ImpactPage() {
         <div className="container">
           <motion.div
             className="max-w-xl mb-14"
-            initial="hidden" animate={matInView ? 'show' : 'hidden'}
-            variants={fadeUp} transition={{ duration: 0.6, ease: 'easeOut' }}
+            initial="hidden"
+            animate={matInView ? 'show' : 'hidden'}
+            variants={fadeUp}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
           >
             <p className="eyebrow mb-4">Material breakdown</p>
             <h2 className="h2 text-[#0A1F14]">What we recover, by material.</h2>
@@ -169,12 +168,16 @@ export default function ImpactPage() {
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+            {/* Bar chart */}
             <div className="space-y-5">
               {MATERIALS.map((m, i) => (
                 <motion.div
                   key={m.label}
-                  initial="hidden" animate={matInView ? 'show' : 'hidden'}
-                  variants={fadeUp} transition={{ duration: 0.5, ease: 'easeOut', delay: 0.1 + i * 0.08 }}
+                  initial="hidden"
+                  animate={matInView ? 'show' : 'hidden'}
+                  variants={fadeUp}
+                  transition={{ duration: 0.5, ease: 'easeOut', delay: 0.1 + i * 0.08 }}
                 >
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-2.5">
@@ -183,7 +186,10 @@ export default function ImpactPage() {
                     </div>
                     <div className="flex items-center gap-4">
                       <span className="text-[#888780] text-[13px]">{m.kg}</span>
-                      <span className="text-[15px] font-semibold tabular-nums w-10 text-right" style={{ color: m.color }}>
+                      <span
+                        className="text-[15px] font-semibold tabular-nums w-10 text-right"
+                        style={{ color: m.color }}
+                      >
                         {m.pct}%
                       </span>
                     </div>
@@ -205,6 +211,7 @@ export default function ImpactPage() {
               </p>
             </div>
 
+            {/* Donut chart */}
             <motion.div
               className="flex flex-col items-center"
               initial={{ opacity: 0, scale: 0.95 }}
@@ -217,6 +224,7 @@ export default function ImpactPage() {
                 <p className="text-[#888780] text-[14px] mt-1">Total procured to date</p>
               </div>
             </motion.div>
+
           </div>
         </div>
       </section>
@@ -226,8 +234,10 @@ export default function ImpactPage() {
         <div className="container">
           <motion.div
             className="max-w-xl mb-14"
-            initial="hidden" animate={mapInView ? 'show' : 'hidden'}
-            variants={fadeUp} transition={{ duration: 0.6, ease: 'easeOut' }}
+            initial="hidden"
+            animate={mapInView ? 'show' : 'hidden'}
+            variants={fadeUp}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
           >
             <p className="eyebrow mb-4">Coverage</p>
             <h2 className="h2 text-[#0A1F14]">Where we operate in Andhra Pradesh.</h2>
@@ -239,22 +249,39 @@ export default function ImpactPage() {
 
           <motion.div
             className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3"
-            initial="hidden" animate={mapInView ? 'show' : 'hidden'}
-            variants={fadeUp} transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1 }}
+            initial="hidden"
+            animate={mapInView ? 'show' : 'hidden'}
+            variants={fadeUp}
+            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1 }}
           >
             {DISTRICTS_COVERED.map((d) => (
               <div
                 key={d.name}
-                className={`flex items-center gap-2.5 px-4 py-3 rounded-lg border text-[14px] font-medium ${
-                  d.active ? 'bg-white border-[#1D9E75]/30 text-[#0A1F14]' : 'bg-transparent border-[#D3D1C7] text-[#888780]'
+                className={`flex items-center gap-2 px-4 py-3 rounded-lg border text-[14px] font-medium ${
+                  d.active
+                    ? 'bg-white border-[#1D9E75]/30 text-[#0A1F14]'
+                    : 'bg-transparent border-[#D3D1C7] text-[#888780]'
                 }`}
               >
                 <div className={`w-2 h-2 rounded-full shrink-0 ${d.active ? 'bg-[#1D9E75]' : 'bg-[#D3D1C7]'}`} />
                 {d.name}
-                {!d.active && <span className="ml-auto text-[10px] text-[#D3D1C7] uppercase tracking-wide">Soon</span>}
+                {!d.active && (
+                  <span className="ml-auto text-[10px] text-[#D3D1C7] uppercase tracking-wide">Soon</span>
+                )}
               </div>
             ))}
           </motion.div>
+
+          <div className="mt-6 flex items-center gap-6">
+            <div className="flex items-center gap-2 text-[13px] text-[#888780]">
+              <div className="w-2.5 h-2.5 rounded-full bg-[#1D9E75]" />
+              Active districts
+            </div>
+            <div className="flex items-center gap-2 text-[13px] text-[#888780]">
+              <div className="w-2.5 h-2.5 rounded-full bg-[#D3D1C7]" />
+              Coming soon
+            </div>
+          </div>
         </div>
       </section>
 
@@ -272,7 +299,10 @@ export default function ImpactPage() {
               { name: 'GST Registered',   number: '37AAOCR8130R1ZG',     color: '#1D9E75', desc: 'Fully GST-registered. Every transaction is invoiced and tax-compliant.'   },
             ].map((cert) => (
               <div key={cert.name} className="border rounded-xl p-6" style={{ borderColor: `${cert.color}25` }}>
-                <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style={{ background: `${cert.color}12` }}>
+                <div
+                  className="w-10 h-10 rounded-lg flex items-center justify-center mb-4"
+                  style={{ background: `${cert.color}12` }}
+                >
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={cert.color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                   </svg>
@@ -292,7 +322,9 @@ export default function ImpactPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <div>
               <p className="eyebrow mb-4">BRSR methodology</p>
-              <h2 className="h2 text-white mb-6">Our data meets SEBI BRSR Principle 6 standards.</h2>
+              <h2 className="h2 text-white mb-6">
+                Our data meets SEBI BRSR Principle 6 standards.
+              </h2>
               <div className="space-y-4 text-white/65 text-[16px] leading-[1.75]">
                 <p>
                   Every ESG figure published by RevivaGreen is derived from
@@ -313,11 +345,11 @@ export default function ImpactPage() {
             </div>
             <div className="space-y-4">
               {[
-                { title: 'Source data',        desc: 'GST-invoiced pickup records from Zoho Books. Every figure traces to a specific invoice and weighing record.' },
-                { title: 'CO₂ calculation',    desc: 'IPCC Tier 1 emission factors by material category. Methodology document available on request.'              },
-                { title: 'BRSR alignment',     desc: 'Data structured to SEBI BRSR Principle 6 — Resource Use, Circular Economy, and Waste Management.'           },
-                { title: 'Audit trail',        desc: 'Every ESG data point links to the underlying GST invoice. Auditors can independently verify any figure.'     },
-                { title: 'Update frequency',   desc: 'Impact numbers updated manually every month. Report date shown on every published figure.'                   },
+                { title: 'Source data',      desc: 'GST-invoiced pickup records from Zoho Books. Every figure traces to a specific invoice and weighing record.'  },
+                { title: 'CO₂ calculation',  desc: 'IPCC Tier 1 emission factors by material category. Methodology document available on request.'               },
+                { title: 'BRSR alignment',   desc: 'Data structured to SEBI BRSR Principle 6 — Resource Use, Circular Economy, and Waste Management.'            },
+                { title: 'Audit trail',      desc: 'Every ESG data point links to the underlying GST invoice. Auditors can independently verify any figure.'      },
+                { title: 'Update frequency', desc: 'Impact numbers updated manually every month. Report date shown on every published figure.'                    },
               ].map((item, i) => (
                 <div key={item.title} className="flex gap-4 bg-[#0F2B1A] border border-white/[0.06] rounded-xl p-5">
                   <div className="w-8 h-8 rounded-lg bg-[#1D9E75]/10 flex items-center justify-center shrink-0">
@@ -329,7 +361,11 @@ export default function ImpactPage() {
                   </div>
                 </div>
               ))}
-              <a href="#" className="inline-flex items-center gap-2 text-[#1D9E75] text-[14px] font-medium hover:underline pt-2" aria-label="Download methodology document PDF">
+              <a
+                href="#"
+                className="inline-flex items-center gap-2 text-[#1D9E75] text-[14px] font-medium hover:underline pt-2"
+                aria-label="Download methodology document PDF"
+              >
                 Download full methodology document (PDF)
                 <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                   <path d="M8 3v7M8 10l-3-3M8 10l3-3M3 13h10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -345,14 +381,18 @@ export default function ImpactPage() {
         <div className="container">
           <div className="max-w-2xl mx-auto text-center">
             <p className="eyebrow mb-4">Get your own data</p>
-            <h2 className="h2 text-[#0A1F14] mb-5">Your business deserves its own ESG dashboard.</h2>
+            <h2 className="h2 text-[#0A1F14] mb-5">
+              Your business deserves its own ESG dashboard.
+            </h2>
             <p className="text-[#888780] text-[17px] leading-[1.7] mb-8 max-w-lg mx-auto">
               Every RevivaGreen client gets a real-time ESG dashboard with their own
               material breakdown, CO₂ figures, and BRSR-ready report.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact" className="btn-primary px-8 py-3.5">Request a demo</Link>
-              <Link href="/platform" className="btn-outline-white !text-[#0A1F14] !border-[#D3D1C7] hover:!border-[#1D9E75] px-8 py-3.5">See the platform</Link>
+              <Link href="/platform" className="btn-outline-white !text-[#0A1F14] !border-[#D3D1C7] hover:!border-[#1D9E75] px-8 py-3.5">
+                See the platform
+              </Link>
             </div>
           </div>
         </div>
@@ -364,7 +404,11 @@ export default function ImpactPage() {
 }
 
 /* ── STAT CARD ───────────────────────────────────────────── */
-function StatCard({ stat, active, delay }: { stat: (typeof IMPACT_STATS)[number]; active: boolean; delay: number }) {
+function StatCard({
+  stat, active, delay,
+}: {
+  stat: (typeof IMPACT_STATS)[number]; active: boolean; delay: number
+}) {
   const count = useCountUp(stat.value, 2000, active)
   return (
     <motion.div
@@ -373,10 +417,15 @@ function StatCard({ stat, active, delay }: { stat: (typeof IMPACT_STATS)[number]
       animate={active ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
       transition={{ duration: 0.6, ease: 'easeOut', delay }}
     >
-      <span className="block text-[52px] font-semibold text-[#1D9E75] leading-none tabular-nums" data-target={stat.value}>
+      <span
+        className="block text-[52px] font-semibold text-[#1D9E75] leading-none tabular-nums"
+        data-target={stat.value}
+      >
         {count}{stat.suffix}
       </span>
-      {stat.unit && <span className="block text-[#1D9E75]/50 text-[14px] font-medium mt-1">{stat.unit}</span>}
+      {stat.unit && (
+        <span className="block text-[#1D9E75]/50 text-[14px] font-medium mt-1">{stat.unit}</span>
+      )}
       <span className="block text-white/80 font-medium text-[15px] mt-3">{stat.label}</span>
       <span className="block text-white/30 text-[12px] mt-1">{stat.sublabel}</span>
     </motion.div>
@@ -385,7 +434,11 @@ function StatCard({ stat, active, delay }: { stat: (typeof IMPACT_STATS)[number]
 
 /* ── DONUT CHART ─────────────────────────────────────────── */
 function DonutChart({ materials }: { materials: typeof MATERIALS }) {
-  const size = 220; const cx = size / 2; const cy = size / 2; const r = 80; const strokeWidth = 28
+  const size = 220
+  const cx = size / 2
+  const cy = size / 2
+  const r = 80
+  const strokeWidth = 28
   const circumference = 2 * Math.PI * r
   let offset = 0
   const segments = materials.map((m) => {
@@ -396,10 +449,23 @@ function DonutChart({ materials }: { materials: typeof MATERIALS }) {
     return seg
   })
   return (
-    <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} aria-label="Material breakdown donut chart">
+    <svg
+      width={size}
+      height={size}
+      viewBox={`0 0 ${size} ${size}`}
+      aria-label="Material breakdown donut chart"
+    >
       {segments.map((seg) => (
-        <circle key={seg.label} cx={cx} cy={cy} r={r} fill="none" stroke={seg.color} strokeWidth={strokeWidth}
-          strokeDasharray={`${seg.dash} ${seg.gap}`} strokeDashoffset={-seg.offset + circumference / 4} strokeLinecap="butt" />
+        <circle
+          key={seg.label}
+          cx={cx} cy={cy} r={r}
+          fill="none"
+          stroke={seg.color}
+          strokeWidth={strokeWidth}
+          strokeDasharray={`${seg.dash} ${seg.gap}`}
+          strokeDashoffset={-seg.offset + circumference / 4}
+          strokeLinecap="butt"
+        />
       ))}
       <circle cx={cx} cy={cy} r={r - strokeWidth / 2 - 2} fill="#F7F6F2" />
     </svg>
