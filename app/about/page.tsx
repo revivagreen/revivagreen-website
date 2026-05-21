@@ -252,9 +252,13 @@ export default function AboutPage() {
               </div>
 
               <div className="mt-8 flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-[#1D9E75]/10 border-2 border-[#1D9E75] flex items-center justify-center shrink-0">
-                  <span className="text-[#1D9E75] text-[13px] font-semibold">SR</span>
-                </div>
+                <div className="w-12 h-12 rounded-full border-2 border-[#1D9E75] overflow-hidden shrink-0">
+  <img
+    src="/images/team/surendra.jpg"
+    alt="Surendra Reddy Pamulapati"
+    className="w-full h-full object-cover"
+  />
+</div>
                 <div>
                   <p className="text-[#0A1F14] font-medium text-[15px]">
                     Surendra Reddy Pamulapati
@@ -285,11 +289,13 @@ export default function AboutPage() {
                   documentation.&rdquo;
                 </blockquote>
                 <div className="flex items-center gap-4 pt-5 border-t border-white/[0.08]">
-                  <div className="w-12 h-12 rounded-full bg-[#1D9E75]/15 border-2 border-[#1D9E75] flex items-center justify-center shrink-0">
-                    {/* Replace with real photo once available:
-                    <img src="/images/team/surendra.jpg" alt="Surendra Reddy Pamulapati" className="w-full h-full rounded-full object-cover" /> */}
-                    <span className="text-[#1D9E75] text-[13px] font-semibold">SR</span>
-                  </div>
+                  <div className="w-12 h-12 rounded-full border-2 border-[#1D9E75] overflow-hidden shrink-0">
+  <img
+    src="/images/team/surendra.jpg"
+    alt="Surendra Reddy Pamulapati"
+    className="w-full h-full object-cover"
+  />
+</div>
                   <div>
                     <p className="text-white font-medium text-[15px]">
                       Surendra Reddy Pamulapati
