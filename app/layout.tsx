@@ -15,6 +15,18 @@ export const metadata: Metadata = {
   description:
     "India's first B2B compliance-grade waste management platform. 100% GST-documented scrap recovery, BRSR-aligned ESG data, and multi-branch dashboard for businesses in Andhra Pradesh.",
   metadataBase: new URL('https://revivagreen.com'),
+
+  icons: {
+  icon: [
+    { url: '/favicon.ico' },
+    { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+    { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+  ],
+  apple: '/apple-touch-icon.png',
+  other: [
+    { rel: 'manifest', url: '/site.webmanifest' },
+  ],
+},
   openGraph: {
     title: 'RevivaGreen | GST-Compliant Waste Management & ESG Platform',
     description:
