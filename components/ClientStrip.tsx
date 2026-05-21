@@ -2,7 +2,7 @@
 
 const LOGOS = [
   { name: 'Lakshmi Group',    abbr: 'LM'  },
-  { name: 'CCL Products',     abbr: 'CCL' },
+  { name: 'CCL Products',     abbr: 'CC' },
   { name: 'Varun Group',      abbr: 'VG'  },
   { name: 'Pruthvi Toyota',   abbr: 'MRB'  },
   { name: 'Client Five',      abbr: 'C5'  },

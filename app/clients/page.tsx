@@ -237,10 +237,6 @@ export default function ClientsPage() {
                       </p>
                     </div>
                   </div>
-                  {/* Permission reminder — remove before publishing real testimonials */}
-                  <p className="mt-3 text-[11px] text-[#D3D1C7] italic">
-                    ⚠ Replace with real testimonial once written permission is obtained.
-                  </p>
                 </div>
               </div>
 
