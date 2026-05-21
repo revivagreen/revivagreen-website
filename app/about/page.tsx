@@ -171,7 +171,7 @@ export default function AboutPage() {
 
               <div className="space-y-5 text-[#2C2C2A] text-[17px] leading-[1.75]">
                 <p>
-                  During my years in industry, I watched something that quietly. 
+                  During my years in industry, I watched something that quietly frustrated me every single month. 
                   Organised businesses across
                   Andhra Pradesh — dealerships, manufacturers, FMCG companies —
                   were generating significant volumes of recyclable scrap. Iron,
