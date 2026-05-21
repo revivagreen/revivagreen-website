@@ -16,7 +16,7 @@ const TEAM = [
     role: 'Founder & CEO',
     bio: 'Founded RevivaGreen after years in industry watching organised businesses hand valuable scrap to unregistered dealers with no documentation. Left his corporate role in 2024 to build the professional alternative that did not exist.',
     initials: 'SR',
-    // photo: '/images/team/surendra.jpg',
+    photo: '/images/team/surendra.jpg',
   },
   {
     name: 'Ragini Pamulapati',
@@ -363,13 +363,19 @@ export default function AboutPage() {
                 key={member.name}
                 className="bg-white rounded-2xl p-8 border border-[#D3D1C7] hover:border-[#1D9E75]/40 transition-colors duration-250"
               >
-                <div className="w-16 h-16 rounded-full bg-[#1D9E75]/10 border-2 border-[#1D9E75] flex items-center justify-center mb-5">
-                  {/* Replace with real photo once available:
-                  <img src={member.photo} alt={member.name} className="w-full h-full rounded-full object-cover" /> */}
-                  <span className="text-[#1D9E75] text-[16px] font-semibold">
-                    {member.initials}
-                  </span>
-                </div>
+                <div className="w-16 h-16 rounded-full border-2 border-[#1D9E75] mb-5 overflow-hidden">
+  {member.photo ? (
+    <img
+      src={member.photo}
+      alt={member.name}
+      className="w-full h-full object-cover"
+    />
+  ) : (
+    <div className="w-full h-full bg-[#1D9E75]/10 flex items-center justify-center">
+      <span className="text-[#1D9E75] text-[16px] font-semibold">{member.initials}</span>
+    </div>
+  )}
+</div>
                 <h3 className="text-[#0A1F14] font-medium text-[17px] mb-0.5">
                   {member.name}
                 </h3>
