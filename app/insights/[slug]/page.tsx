@@ -3,69 +3,149 @@ import Footer from '@/components/Footer'
 import Link from 'next/link'
 import type { Metadata } from 'next'
 
-/* ── ARTICLES DATABASE ───────────────────────────────────────
-   Add each article here. The slug must match the /insights page. */
+const CATEGORY_COLORS: Record<string, string> = {
+  'EPR':              'bg-[#E1F5EE] text-[#085041]',
+  'BRSR':             'bg-[#EAF0FF] text-[#1A3C8C]',
+  'Circular Economy': 'bg-[#FFF8E8] text-[#7A5500]',
+  'Company News':     'bg-[#F5F0E8] text-[#5A5850]',
+}
+
 const ARTICLES: Record<string, {
-  category: string
-  title: string
-  date: string
-  author: string
-  readTime: string
+  category: string; title: string; date: string; author: string
+  readTime: string; cardBg: string; cardAccent: string; cardLabel: string
   content: string[]
 }> = {
   'epr-compliance-guide-andhra-pradesh-2026': {
     category: 'EPR',
     title: 'The Complete EPR Compliance Guide for Andhra Pradesh Businesses in 2026',
-    date: 'May 15, 2026',
-    author: 'RevivaGreen Strategy Team',
-    readTime: '8 min read',
+    date: 'May 15, 2026', author: 'RevivaGreen Strategy Team', readTime: '8 min read',
+    cardBg: '#0A1F14', cardAccent: '#1D9E75', cardLabel: 'EPR Compliance',
     content: [
       'Extended Producer Responsibility (EPR) is no longer a future obligation for Indian businesses — it is a present legal requirement with real penalties for non-compliance.',
       'The Environment (Protection) Act and its subsidiary rules now mandate that producers, importers, and brand owners of plastic packaging, electronic equipment, batteries, and tyres take responsibility for the end-of-life management of their products.',
       'For businesses operating in Andhra Pradesh, this means engaging with APPCB-authorised collection and recycling channels — and maintaining documentation that proves you did so.',
-      'This guide covers what EPR means for your business, which categories are covered, and the practical steps to achieve compliance in 2026.',
       '## Which businesses are covered?',
-      'EPR obligations apply to: producers and importers of plastic packaging materials, electronic and electrical equipment manufacturers and importers, battery manufacturers and importers, and tyre manufacturers and importers.',
+      'EPR obligations apply to producers and importers of plastic packaging materials, electronic and electrical equipment manufacturers and importers, battery manufacturers and importers, and tyre manufacturers and importers.',
       'If your business generates waste in any of these categories — even as a downstream user — you have an obligation to ensure it is channelled to an authorised recycler.',
       '## What documentation do you need?',
       'At minimum, your EPR compliance documentation should include: collection certificates from authorised collection partners, recycling certificates from CPCB-registered recyclers, material weight records by category, and annual compliance filings with the relevant authority.',
+      'Without this documentation, your business is exposed to regulatory penalties, potential operational shutdowns, and reputational risk with investors and auditors who are increasingly scrutinising EPR compliance as part of ESG due diligence.',
+      '## The APPCB connection',
+      'In Andhra Pradesh, EPR-related waste must flow through channels authorised by the Andhra Pradesh Pollution Control Board (APPCB). This means your waste vendor must hold valid APPCB authorisation — not simply be a registered GST entity.',
+      'Most informal scrap dealers in AP do not hold APPCB authorisation. Using them for EPR-covered waste categories does not discharge your EPR obligation, even if you receive a receipt or informal acknowledgement.',
       '## How RevivaGreen supports EPR compliance',
-      'RevivaGreen is an APPCB-authorised resource recovery partner. We collect your EPR-covered materials, channel them to certified recyclers, and provide you with the documentation you need for your annual filing.',
-      'Our EPR compliance service starts from ₹3L per year for managed service clients. Contact us to discuss your specific obligations and volume.',
+      'RevivaGreen is an APPCB-authorised resource recovery partner. We collect your EPR-covered materials, channel them to certified recyclers, and provide you with the documentation you need for your annual filing. Our EPR compliance service starts from ₹3L per year for managed service clients.',
     ],
   },
+
   'brsr-waste-data-explainer': {
     category: 'BRSR',
     title: 'How to Complete BRSR Principle 6 — A Practical Guide for Waste Data',
-    date: 'May 8, 2026',
-    author: 'RevivaGreen Strategy Team',
-    readTime: '6 min read',
+    date: 'May 8, 2026', author: 'RevivaGreen Strategy Team', readTime: '6 min read',
+    cardBg: '#0F2B1A', cardAccent: '#5DCAA5', cardLabel: 'BRSR Reporting',
     content: [
-      'SEBI\'s Business Responsibility and Sustainability Report (BRSR) framework requires structured disclosure across nine principles. Principle 6 — Responsible Business in Respect of Environment — is where waste data lives.',
-      'For most businesses, Principle 6 is also where their BRSR report is weakest. Without a compliant waste management partner providing structured data, the waste sections are either left blank or filled with estimates.',
+      "SEBI's Business Responsibility and Sustainability Report (BRSR) framework requires structured disclosure across nine principles. Principle 6 — Responsible Business in Respect of Environment — is where waste data lives.",
+      'For most businesses, Principle 6 is also where their BRSR report is weakest. Without a compliant waste management partner providing structured data, the waste sections are either left blank, filled with estimates, or copied from the previous year.',
       '## What Principle 6 requires',
-      'Under Principle 6, Essential Indicator 8 requires disclosure of total waste generated by category, total waste recovered through recycling, reuse, or other recovery operations, and total waste disposed.',
-      'The data must be specific to your operations, broken down by material type, and — increasingly — verified by a third party.',
+      'Under Principle 6, Essential Indicator 8 requires disclosure of total waste generated by category, total waste recovered through recycling or reuse, and total waste disposed. The data must be specific to your operations, broken down by material type, and — increasingly — verified by a third party.',
       '## Where most businesses go wrong',
-      'The most common failure point is the absence of material-level data from waste vendors. If your scrap dealer cannot tell you exactly how many kilograms of iron, aluminium, copper, and plastic they collected from you last year, you cannot complete Principle 6 accurately.',
+      'The most common failure point is the absence of material-level data from waste vendors. If your scrap dealer cannot tell you exactly how many kilograms of iron, aluminium, copper, and plastic they collected from you last quarter, you cannot complete Principle 6 accurately.',
+      'A second common failure is the absence of an audit trail. Even if you have weight figures, if those figures cannot be independently verified against a GST invoice or a certified weighing record, your auditor will flag the data as unreliable.',
+      '## The right approach',
+      'Switch to a vendor who provides material-level documentation on every pickup — with weights broken down by category and linked to GST invoice records. This gives you accurate figures for your BRSR report, an audit trail your sustainability auditor can independently verify, and a basis for calculating your CO₂ diversion figures.',
+      '## How RevivaGreen makes this automatic',
+      'Every pickup RevivaGreen collects from your premises is recorded by material type and weight, linked to a GST invoice, and fed into your BRSR Principle 6 data in real time. At the end of each quarter, you download a single PDF that contains everything your auditor needs — material breakdown, total weight recovered, CO₂ equivalent diverted, and references to underlying GST invoices.',
+    ],
+  },
+
+  'circular-economy-andhra-pradesh': {
+    category: 'Circular Economy',
+    title: "Why Andhra Pradesh is Positioned to Lead India's Circular Economy Transition",
+    date: 'April 28, 2026', author: 'Surendra Reddy Pamulapati', readTime: '5 min read',
+    cardBg: '#1A3C1A', cardAccent: '#1D9E75', cardLabel: 'Circular Economy',
+    content: [
+      "When people talk about India's circular economy transition, the conversation tends to centre on Maharashtra, Gujarat, or Tamil Nadu. Andhra Pradesh rarely features in those discussions. I think that is a significant oversight — and one that creates a real opportunity for businesses that are paying attention.",
+      '## The industrial density advantage',
+      'The Krishna–Guntur–Eluru economic corridor is one of the most industrially active regions in South India. Within a 200-kilometre stretch, you have automotive dealerships, FMCG manufacturers, pharmaceutical plants, paper mills, steel fabricators, and chemical processors — all generating significant volumes of recyclable material every month.',
+      'In terms of recyclable material generated per square kilometre, this corridor compares favourably with far more celebrated industrial regions in India. The difference is that the infrastructure to capture and formalise that material has not existed — until recently.',
+      '## What the informal sector cannot provide',
+      "For most of the past decade, recyclable material from AP businesses has flowed into the informal sector: unregistered local dealers who pay cash, issue no invoices, maintain no records, and channel material through routes that produce no verifiable environmental benefit. This is not because AP businesses do not care about compliance. It is because no compliant alternative existed at scale.",
+      '## Why that is changing',
+      "Three forces are converging to formalise AP's circular economy. First, SEBI's BRSR mandate is creating demand from listed companies for structured waste data — data the informal sector cannot provide. Second, the tightening of EPR regulations is creating legal exposure for businesses using non-authorised waste channels. Third, GST compliance requirements are making cash-based scrap transactions increasingly risky from a tax perspective.",
+      '## The opportunity for businesses that move first',
+      'Businesses in AP that formalise their waste management now — before the regulatory pressure intensifies — gain three advantages. They build a compliance record that will matter to auditors and investors. They establish ESG data that will distinguish them in BRSR filings. And they eliminate the operational and reputational risk that comes with informal sector dependency.',
+      'Andhra Pradesh is not behind on the circular economy transition. It is at the beginning of it — and the beginning is always the best time to position yourself on the right side.',
+    ],
+  },
+
+  'gst-compliant-scrap-management': {
+    category: 'EPR',
+    title: 'GST on Scrap Sales: What Every Finance Manager in AP Needs to Know',
+    date: 'April 15, 2026', author: 'RevivaGreen Strategy Team', readTime: '7 min read',
+    cardBg: '#0A1F14', cardAccent: '#C8A84B', cardLabel: 'GST Compliance',
+    content: [
+      'Scrap sales are taxable under GST — and a surprisingly large number of businesses in Andhra Pradesh are getting this wrong. Not through deliberate evasion, but through informal vendor relationships that leave no documentation trail.',
+      '## Is scrap covered under GST?',
+      'Yes. The sale of scrap — whether industrial waste, packaging material, off-cuts, or end-of-life equipment — is a supply of goods under the GST Act and is taxable accordingly. Most common scrap materials attract 18% GST. When a business hands scrap to a dealer and receives cash, that transaction is a sale. If the dealer does not issue a GST invoice, the transaction is undocumented — and the business has no ITC claim available.',
+      '## The Input Tax Credit problem',
+      'When a GST-registered vendor collects your scrap and issues a valid GST invoice, the GST component is available as ITC against your output tax liability. When an informal dealer collects the same scrap and pays cash with no invoice, the transaction is outside the GST system entirely. The ITC is unavailable, and your books show no record of the disposal.',
+      'For businesses generating significant scrap volumes, this is not a small number. A manufacturing unit generating 10 tonnes of mixed scrap per month could be forfeiting ₹15,000–₹40,000 in ITC every month simply by using informal dealers.',
+      '## What your CA needs from your scrap vendor',
+      'For your statutory auditor and CA to treat scrap disposal correctly, they need: a valid GST invoice from your scrap vendor for every collection, the vendor\'s GSTIN verified against the GST portal, the material category and weight recorded on the invoice, and bank transfer confirmation for amounts above ₹10,000. If your current scrap vendor cannot provide these four things, your scrap disposal is not GST-compliant.',
+      '## The audit exposure',
+      'GST audits increasingly scrutinise scrap disposal. An auditor who finds significant scrap volumes in your production records but no corresponding GST invoices for disposal will flag the discrepancy. The consequences range from demands for tax and interest to penalties that can exceed the original tax liability.',
       '## How to fix it',
-      'Switch to a vendor who provides material-level documentation on every pickup — with weights broken down by category and linked to GST invoice records. RevivaGreen provides this data automatically to all clients through our ESG dashboard.',
-      'Your auditor can then independently verify your BRSR Principle 6 data against our GST invoice records — making your sustainability report credible, not just compliant.',
+      'Switch to a GST-registered scrap vendor who issues compliant invoices for every collection. RevivaGreen provides GST invoices within 24 hours of every pickup, with material category, weight, and applicable GST rate clearly stated. Your CA can verify every invoice against the GST portal.',
+    ],
+  },
+
+  'informal-to-formal-waste-management': {
+    category: 'Company News',
+    title: 'From Informal to Formal: How AP Businesses Made the Switch',
+    date: 'April 2, 2026', author: 'RevivaGreen Strategy Team', readTime: '4 min read',
+    cardBg: '#0F2B1A', cardAccent: '#1D9E75', cardLabel: 'Company News',
+    content: [
+      'Over the past year, we have onboarded businesses across Andhra Pradesh who were previously managing their scrap through the informal sector. We asked them what prompted the switch, what the transition looked like, and what changed after.',
+      '## What prompted the switch',
+      "The most common trigger was an external prompt rather than an internal decision. For listed companies, it was an auditor's question about scrap disposal documentation. For privately-held businesses, it was typically a CFO or GM who became concerned about GST exposure after a routine compliance review. For a smaller number, it was a sustainability manager preparing the company's first BRSR filing who realised the waste data section was impossible to complete without structured vendor records.",
+      'In almost every case, the businesses had not thought carefully about scrap management before. It was background noise — something that happened, cash changed hands, and no one tracked it.',
+      '## What the transition looked like',
+      'The transition from informal to formal is straightforward in practice but requires one deliberate decision: stopping cash payments to informal dealers and redirecting collections to a compliant vendor.',
+      'The most common concern we hear before onboarding is about price — that a compliant vendor will pay less for scrap than an informal dealer. In practice, the difference is small and typically offset within months by ITC recovery alone. For businesses generating more than 2 tonnes of scrap per month, the ITC benefit of compliant disposal usually exceeds any price differential.',
+      '## What changed after',
+      'The most consistently reported change after switching to RevivaGreen is visibility. Businesses that previously had no idea how much scrap they were generating — or what happened to it — suddenly have a monthly material report, a CO₂ diversion figure, and a GST invoice for every collection.',
+      "Finance teams report that the ITC claims are straightforward and that the invoices pass auditor scrutiny without question. Sustainability managers report that the BRSR waste data section, which was previously left blank or estimated, is now completed from actual records. GMs report that they no longer have to manage multiple informal vendors across different locations — one account, one invoice summary, one dashboard.",
+      "The switch from informal to formal is not complicated. It is a decision. Most businesses that have made it say they should have made it sooner.",
+    ],
+  },
+
+  'e-waste-rules-2022-guide': {
+    category: 'EPR',
+    title: 'E-Waste Rules 2022: What Changed and What Your Business Must Do Now',
+    date: 'March 20, 2026', author: 'RevivaGreen Strategy Team', readTime: '6 min read',
+    cardBg: '#0A1F14', cardAccent: '#5DCAA5', cardLabel: 'E-Waste Rules',
+    content: [
+      'The E-Waste (Management) Rules 2022 significantly expanded the scope and enforcement of producer responsibility for electronic waste in India. If your business manufactures, imports, or sells electrical and electronic equipment, you have new obligations that many companies have not yet fully understood.',
+      '## What changed from the 2016 rules',
+      'The 2022 rules introduced several significant changes. The product scope was expanded to cover a wider range of electrical and electronic equipment categories. Collection targets were made more stringent, with year-on-year increases. The Extended Producer Responsibility (EPR) framework was formalized, requiring producers to register on the EPR portal maintained by CPCB and report annually. Penalties for non-compliance were increased substantially.',
+      '## Who is covered',
+      'The 2022 rules cover producers (manufacturers and importers) of electrical and electronic equipment, bulk consumers (organisations that purchase large quantities of EEE), collection centres, dismantlers, and recyclers.',
+      'Bulk consumers — which includes most medium and large businesses — have a specific obligation: they must hand over end-of-life electrical and electronic equipment only to authorised collection centres, dismantlers, or recyclers. Handing e-waste to informal kabadiwallas or unlicensed recyclers does not satisfy this obligation.',
+      '## The documentation requirement',
+      'The rules require bulk consumers to maintain records of e-waste generated and channelled for disposal. These records must be available for inspection by CPCB or State PCBs (including APPCB in Andhra Pradesh). Without documentation showing that your e-waste went to an authorised channel, you have no defence in an inspection.',
+      '## What authorised means in practice',
+      'An authorised dismantler or recycler holds a valid consent from the relevant State Pollution Control Board. In Andhra Pradesh, this means APPCB consent. Before handing e-waste to any vendor, verify that they hold current APPCB authorisation for e-waste handling. A GST registration alone is not sufficient.',
+      '## How RevivaGreen handles e-waste',
+      'RevivaGreen collects e-waste from client premises and channels it to APPCB-authorised dismantlers and recyclers. Every collection generates a GST invoice and a material record that specifies the e-waste category and weight. This gives you the documentation you need for compliance purposes and the audit trail your CA or APPCB inspector may request.',
     ],
   },
 }
 
-/* ── GENERATE STATIC PARAMS ──────────────────────────────── */
 export async function generateStaticParams() {
   return Object.keys(ARTICLES).map((slug) => ({ slug }))
 }
 
-/* ── METADATA ────────────────────────────────────────────── */
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ slug: string }>
-}): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params
   const article = ARTICLES[slug]
   if (!article) return { title: 'Article not found | RevivaGreen Insights' }
@@ -75,12 +155,19 @@ export async function generateMetadata({
   }
 }
 
-/* ── PAGE ────────────────────────────────────────────────── */
-export default async function ArticlePage({
-  params,
-}: {
-  params: Promise<{ slug: string }>
-}) {
+function ArticleCardImage({ bg, accent, label, category }: { bg: string; accent: string; label: string; category: string }) {
+  return (
+    <div className="w-full rounded-2xl overflow-hidden aspect-[16/6] flex flex-col items-center justify-center relative" style={{ background: bg }} aria-hidden="true">
+      <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: `radial-gradient(circle at 20% 80%, ${accent} 0%, transparent 60%), radial-gradient(circle at 80% 20%, ${accent} 0%, transparent 60%)` }} />
+      <div className="absolute inset-0 opacity-[0.06]" style={{ backgroundImage: `linear-gradient(${accent} 1px, transparent 1px), linear-gradient(90deg, ${accent} 1px, transparent 1px)`, backgroundSize: '40px 40px' }} />
+      <div className="relative z-10 text-[11px] font-semibold uppercase tracking-[0.12em] px-3 py-1.5 rounded-full mb-3" style={{ background: `${accent}20`, color: accent, border: `1px solid ${accent}40` }}>{category}</div>
+      <p className="relative z-10 text-[16px] font-medium text-center px-8 max-w-lg leading-[1.4]" style={{ color: `${accent}CC` }}>{label}</p>
+      <p className="absolute bottom-4 right-5 text-[10px] font-semibold uppercase tracking-[0.1em] opacity-30" style={{ color: accent }}>RevivaGreen Insights</p>
+    </div>
+  )
+}
+
+export default async function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
   const article = ARTICLES[slug]
 
@@ -91,9 +178,7 @@ export default async function ArticlePage({
         <div className="min-h-[60vh] flex items-center justify-center">
           <div className="text-center">
             <h1 className="h2 text-[#0A1F14] mb-4">Article not found</h1>
-            <Link href="/insights" className="btn-primary">
-              Back to Insights
-            </Link>
+            <Link href="/insights" className="btn-primary">Back to Insights</Link>
           </div>
         </div>
         <Footer />
@@ -101,41 +186,22 @@ export default async function ArticlePage({
     )
   }
 
-  const CATEGORY_COLORS: Record<string, string> = {
-    'EPR':              'bg-[#E1F5EE] text-[#085041]',
-    'BRSR':             'bg-[#EAF0FF] text-[#1A3C8C]',
-    'Circular Economy': 'bg-[#FFF8E8] text-[#7A5500]',
-    'Company News':     'bg-[#F5F0E8] text-[#5A5850]',
-  }
-
   return (
     <main>
       <Navbar />
 
-      {/* ── ARTICLE HERO ──────────────────────────────────── */}
+      {/* ── HERO ──────────────────────────────────────────── */}
       <section className="bg-[#F5F0E8] pt-40 pb-16 border-b border-[#D3D1C7]">
         <div className="container">
           <div className="max-w-3xl">
-            <Link
-              href="/insights"
-              className="inline-flex items-center gap-2 text-[#888780] text-[13px] hover:text-[#1D9E75] transition-colors mb-8"
-            >
-              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <path d="M13 8H3M3 8L7 4M3 8L7 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+            <Link href="/insights" className="inline-flex items-center gap-2 text-[#888780] text-[13px] hover:text-[#1D9E75] transition-colors mb-8">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13 8H3M3 8L7 4M3 8L7 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
               Back to Insights
             </Link>
-
-            <span
-              className={`inline-block text-[11px] font-semibold uppercase tracking-[0.1em] px-3 py-1.5 rounded-full mb-5 ${CATEGORY_COLORS[article.category] ?? 'bg-[#F5F0E8] text-[#5A5850]'}`}
-            >
+            <span className={`inline-block text-[11px] font-semibold uppercase tracking-[0.1em] px-3 py-1.5 rounded-full mb-5 ${CATEGORY_COLORS[article.category] ?? 'bg-[#F5F0E8] text-[#5A5850]'}`}>
               {article.category}
             </span>
-
-            <h1 className="h1 text-[#0A1F14] mb-6" style={{ fontSize: 'clamp(28px, 4vw, 48px)' }}>
-              {article.title}
-            </h1>
-
+            <h1 className="h1 text-[#0A1F14] mb-6" style={{ fontSize: 'clamp(28px, 4vw, 48px)' }}>{article.title}</h1>
             <div className="flex flex-wrap items-center gap-4 text-[14px] text-[#888780]">
               <span className="font-medium text-[#2C2C2A]">{article.author}</span>
               <span className="w-1 h-1 rounded-full bg-[#D3D1C7]" />
@@ -147,60 +213,42 @@ export default async function ArticlePage({
         </div>
       </section>
 
-      {/* ── ARTICLE CONTENT ───────────────────────────────── */}
+      {/* ── CONTENT ───────────────────────────────────────── */}
       <section className="bg-white section-py">
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
 
-            {/* Article body */}
-            <article className="lg:col-span-2 prose-revivagreen">
+            <article className="lg:col-span-2">
+              {/* Article image */}
+              <div className="mb-10">
+                <ArticleCardImage bg={article.cardBg} accent={article.cardAccent} label={article.cardLabel} category={article.category} />
+              </div>
+
+              {/* Article body */}
               {article.content.map((block, i) => {
                 if (block.startsWith('## ')) {
-                  return (
-                    <h2
-                      key={i}
-                      className="text-[#0A1F14] font-medium text-[24px] leading-[1.3] mt-10 mb-4 first:mt-0"
-                    >
-                      {block.replace('## ', '')}
-                    </h2>
-                  )
+                  return <h2 key={i} className="text-[#0A1F14] font-medium text-[24px] leading-[1.3] mt-10 mb-4">{block.replace('## ', '')}</h2>
                 }
-                return (
-                  <p
-                    key={i}
-                    className="text-[#2C2C2A] text-[17px] leading-[1.75] mb-5"
-                  >
-                    {block}
-                  </p>
-                )
+                return <p key={i} className="text-[#2C2C2A] text-[17px] leading-[1.75] mb-5">{block}</p>
               })}
 
               {/* Article CTA */}
               <div className="mt-12 bg-[#F5F0E8] border border-[#1D9E75]/20 rounded-2xl p-8">
-                <p className="text-[#1D9E75] text-[11px] font-semibold uppercase tracking-[0.1em] mb-3">
-                  Need help with compliance?
-                </p>
+                <p className="text-[#1D9E75] text-[11px] font-semibold uppercase tracking-[0.1em] mb-3">Need help with compliance?</p>
                 <p className="text-[#0A1F14] font-medium text-[18px] mb-3">
-                  RevivaGreen handles EPR and BRSR compliance for 100+ AP businesses.
+                  RevivaGreen handles EPR and BRSR compliance for 50+ AP businesses.
                 </p>
                 <p className="text-[#888780] text-[15px] mb-5">
-                  We provide GST-invoiced collections, structured ESG data, and full
-                  compliance documentation — so you can focus on your business.
+                  GST-invoiced collections, structured ESG data, and full compliance documentation — so you can focus on your business.
                 </p>
-                <Link href="/contact" className="btn-primary">
-                  Request a demo →
-                </Link>
+                <Link href="/contact" className="btn-primary">Request a demo →</Link>
               </div>
             </article>
 
             {/* Sidebar */}
-            <aside className="space-y-8">
-
-              {/* About the author */}
+            <aside className="space-y-6">
               <div className="border border-[#D3D1C7] rounded-xl p-5">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#888780] mb-4">
-                  About the author
-                </p>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#888780] mb-4">About the author</p>
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-10 h-10 rounded-full bg-[#1D9E75]/10 border-2 border-[#1D9E75] flex items-center justify-center">
                     <span className="text-[#1D9E75] text-[12px] font-semibold">RG</span>
@@ -210,49 +258,29 @@ export default async function ArticlePage({
                     <p className="text-[#888780] text-[12px]">RevivaGreen Ventures</p>
                   </div>
                 </div>
-                <p className="text-[#888780] text-[13px] leading-[1.65]">
-                  Regulatory intelligence and compliance guidance for businesses in Andhra Pradesh.
-                </p>
+                <p className="text-[#888780] text-[13px] leading-[1.65]">Regulatory intelligence and compliance guidance for businesses in Andhra Pradesh.</p>
               </div>
 
-              {/* Share */}
               <div className="border border-[#D3D1C7] rounded-xl p-5">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#888780] mb-4">
-                  Share this article
-                </p>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#888780] mb-4">Share this article</p>
                 <div className="flex gap-3">
-                  <a
-                    href={`https://www.linkedin.com/sharing/share-offsite/?url=https://revivagreen.com/insights/${slug}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 flex items-center justify-center gap-2 py-2.5 border border-[#D3D1C7] rounded-lg text-[13px] text-[#888780] hover:border-[#1D9E75] hover:text-[#1D9E75] transition-colors"
-                  >
+                  <a href={`https://www.linkedin.com/sharing/share-offsite/?url=https://revivagreen.com/insights/${slug}`} target="_blank" rel="noopener noreferrer"
+                    className="flex-1 flex items-center justify-center py-2.5 border border-[#D3D1C7] rounded-lg text-[13px] text-[#888780] hover:border-[#1D9E75] hover:text-[#1D9E75] transition-colors">
                     LinkedIn
                   </a>
-                  <a
-                    href={`https://twitter.com/intent/tweet?url=https://revivagreen.com/insights/${slug}&text=${encodeURIComponent(article.title)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 flex items-center justify-center gap-2 py-2.5 border border-[#D3D1C7] rounded-lg text-[13px] text-[#888780] hover:border-[#1D9E75] hover:text-[#1D9E75] transition-colors"
-                  >
+                  <a href={`https://twitter.com/intent/tweet?url=https://revivagreen.com/insights/${slug}&text=${encodeURIComponent(article.title)}`} target="_blank" rel="noopener noreferrer"
+                    className="flex-1 flex items-center justify-center py-2.5 border border-[#D3D1C7] rounded-lg text-[13px] text-[#888780] hover:border-[#1D9E75] hover:text-[#1D9E75] transition-colors">
                     X / Twitter
                   </a>
                 </div>
               </div>
 
-              {/* More articles */}
               <div className="border border-[#D3D1C7] rounded-xl p-5">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#888780] mb-4">
-                  More insights
-                </p>
-                <Link
-                  href="/insights"
-                  className="inline-flex items-center gap-2 text-[#1D9E75] text-[14px] font-medium hover:underline"
-                >
+                <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#888780] mb-3">More insights</p>
+                <Link href="/insights" className="inline-flex items-center gap-2 text-[#1D9E75] text-[14px] font-medium hover:underline">
                   View all articles →
                 </Link>
               </div>
-
             </aside>
           </div>
         </div>
