@@ -216,3 +216,8 @@ body {
     --section-py:   48px;
   }
 }
+
+/* Offset anchor scroll to account for fixed navbar height */
+[id] {
+  scroll-margin-top: 100px;
+}

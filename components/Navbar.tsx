@@ -89,25 +89,34 @@ export default function Navbar() {
                   onMouseEnter={() => setDropdownOpen(true)}
                   onMouseLeave={() => setDropdownOpen(false)}
                 >
-                  <button
-                    className={`flex items-center gap-1 text-[15px] font-medium transition-colors duration-200 bg-transparent border-none cursor-pointer ${
-                      isActive(link.href)
-                        ? 'text-[#1D9E75] underline underline-offset-4 decoration-[#1D9E75] decoration-[1.5px]'
-                        : `${linkColor} hover:text-[#1D9E75]`
-                    }`}
-                    aria-expanded={dropdownOpen}
-                    aria-haspopup="true"
-                  >
-                    {link.label}
-                    <svg
-                      className={`w-3.5 h-3.5 transition-transform duration-200 ${dropdownOpen ? 'rotate-180' : ''}`}
-                      viewBox="0 0 14 14"
-                      fill="none"
-                      aria-hidden="true"
-                    >
-                      <path d="M3 5L7 9L11 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </button>
+                  <div className="flex items-center gap-1">
+  <Link
+    href="/services"
+    className={`text-[15px] font-medium transition-colors duration-200 ${
+      isActive(link.href)
+        ? 'text-[#1D9E75] underline underline-offset-4 decoration-[#1D9E75] decoration-[1.5px]'
+        : `${linkColor} hover:text-[#1D9E75]`
+    }`}
+  >
+    {link.label}
+  </Link>
+  <button
+    onClick={() => setDropdownOpen(!dropdownOpen)}
+    className={`p-0.5 bg-transparent border-none cursor-pointer transition-colors duration-200 ${
+      isActive(link.href) ? 'text-[#1D9E75]' : `${linkColor} hover:text-[#1D9E75]`
+    }`}
+    aria-label="Show services menu"
+  >
+    <svg
+      className={`w-3.5 h-3.5 transition-transform duration-200 ${dropdownOpen ? 'rotate-180' : ''}`}
+      viewBox="0 0 14 14"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path d="M3 5L7 9L11 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  </button>
+</div>
 
                   <AnimatePresence>
                     {dropdownOpen && (
