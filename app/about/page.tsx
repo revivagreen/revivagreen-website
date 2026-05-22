@@ -30,7 +30,7 @@ const TEAM = [
     role: 'Head of Operations',
     bio: "Oversees RevivaGreen's on-ground operations across Andhra Pradesh — from pickup scheduling and MRF management to driver training and client service quality. Her focus: every client's experience must be identical, professional, and reliable regardless of which branch or district.",
     initials: 'BR',
-    // photo: '/images/team/ragini.jpg',
+    photo: '/images/team/ragini.jpg',
   },
 ]
 
