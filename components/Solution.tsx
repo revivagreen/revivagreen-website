@@ -11,7 +11,7 @@ const SERVICES = [
     title: 'GST-Compliant Resource Recovery',
     description:
       'Every pickup generates a fully compliant GST invoice — eliminating your exposure to informal dealers and giving your finance team the documentation they need.',
-    href: '/services/recovery',
+    href: '/services#recovery',
     metric: '100%',
     metricLabel: 'GST documented',
   },
@@ -21,7 +21,7 @@ const SERVICES = [
     title: 'ESG Data & BRSR Reporting',
     description:
       'Automatic material-level data on every tonne collected. Your BRSR Principle 6 data is ready for your auditor — no spreadsheets, no manual tracking.',
-    href: '/services/esg',
+    href: '/services#esg',
     metric: 'BRSR',
     metricLabel: 'SEBI aligned',
   },
@@ -31,7 +31,7 @@ const SERVICES = [
     title: 'EPR Compliance Management',
     description:
       'End-to-end Extended Producer Responsibility compliance — from collection documentation to regulatory filing support. Starting from ₹3L/year managed service.',
-    href: '/services/epr',
+    href: '/services#epr',
     metric: 'EPR',
     metricLabel: 'Fully managed',
   },
