@@ -2,6 +2,7 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import Link from 'next/link'
 import InsightsGrid from '@/components/InsightsGrid'
+import NewsletterForm from '@/components/NewsletterForm'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -22,67 +23,85 @@ const ARTICLES = [
     slug: 'epr-compliance-guide-andhra-pradesh-2026',
     category: 'EPR',
     title: 'The Complete EPR Compliance Guide for Andhra Pradesh Businesses in 2026',
-    excerpt: 'Extended Producer Responsibility regulations are tightening across plastic, e-waste, and battery categories. Here is everything AP businesses need to know to stay compliant this year.',
+    excerpt:
+      'Extended Producer Responsibility regulations are tightening across plastic, e-waste, and battery categories. Here is everything AP businesses need to know to stay compliant this year.',
     readTime: '8 min read',
     date: 'May 15, 2026',
     author: 'RevivaGreen Strategy Team',
     featured: true,
-    cardBg: '#0A1F14', cardAccent: '#1D9E75', cardLabel: 'EPR Compliance',
+    cardBg: '#0A1F14',
+    cardAccent: '#1D9E75',
+    cardLabel: 'EPR Compliance',
   },
   {
     slug: 'brsr-waste-data-explainer',
     category: 'BRSR',
     title: 'How to Complete BRSR Principle 6 — A Practical Guide for Waste Data',
-    excerpt: "SEBI's Business Responsibility and Sustainability Report requires structured waste data under Principle 6. This guide explains exactly what data you need, where to get it, and how to report it.",
+    excerpt:
+      "SEBI's Business Responsibility and Sustainability Report requires structured waste data under Principle 6. This guide explains exactly what data you need, where to get it, and how to report it.",
     readTime: '6 min read',
     date: 'May 8, 2026',
     author: 'RevivaGreen Strategy Team',
     featured: false,
-    cardBg: '#0F2B1A', cardAccent: '#5DCAA5', cardLabel: 'BRSR Reporting',
+    cardBg: '#0F2B1A',
+    cardAccent: '#5DCAA5',
+    cardLabel: 'BRSR Reporting',
   },
   {
     slug: 'circular-economy-andhra-pradesh',
     category: 'Circular Economy',
     title: "Why Andhra Pradesh is Positioned to Lead India's Circular Economy Transition",
-    excerpt: 'The Krishna–Guntur–Eluru industrial corridor generates more recyclable material per square kilometre than almost anywhere else in South India. Here is the opportunity that organised businesses are missing.',
+    excerpt:
+      'The Krishna–Guntur–Eluru industrial corridor generates more recyclable material per square kilometre than almost anywhere else in South India. Here is the opportunity that organised businesses are missing.',
     readTime: '5 min read',
     date: 'April 28, 2026',
     author: 'Surendra Reddy Pamulapati',
     featured: false,
-    cardBg: '#1A3C1A', cardAccent: '#1D9E75', cardLabel: 'Circular Economy',
+    cardBg: '#1A3C1A',
+    cardAccent: '#1D9E75',
+    cardLabel: 'Circular Economy',
   },
   {
     slug: 'gst-compliant-scrap-management',
     category: 'EPR',
     title: 'GST on Scrap Sales: What Every Finance Manager in AP Needs to Know',
-    excerpt: 'Scrap sales are taxable under GST — and most businesses in AP are getting it wrong. Here is a plain-language breakdown of the transaction flow, correct GST rates by material, and what your CA needs.',
+    excerpt:
+      'Scrap sales are taxable under GST — and most businesses in AP are getting it wrong. Here is a plain-language breakdown of the transaction flow, correct GST rates by material, and what your CA needs.',
     readTime: '7 min read',
     date: 'April 15, 2026',
     author: 'RevivaGreen Strategy Team',
     featured: false,
-    cardBg: '#0A1F14', cardAccent: '#C8A84B', cardLabel: 'GST Compliance',
+    cardBg: '#0A1F14',
+    cardAccent: '#C8A84B',
+    cardLabel: 'GST Compliance',
   },
   {
     slug: 'informal-to-formal-waste-management',
     category: 'Company News',
     title: 'From Informal to Formal: How AP Businesses Made the Switch',
-    excerpt: 'We surveyed businesses that switched from informal scrap dealers to RevivaGreen. The results on compliance exposure, ESG data availability, and CFO satisfaction were unambiguous.',
+    excerpt:
+      'We surveyed businesses that switched from informal scrap dealers to RevivaGreen. The results on compliance exposure, ESG data availability, and CFO satisfaction were unambiguous.',
     readTime: '4 min read',
     date: 'April 2, 2026',
     author: 'RevivaGreen Strategy Team',
     featured: false,
-    cardBg: '#0F2B1A', cardAccent: '#1D9E75', cardLabel: 'Company News',
+    cardBg: '#0F2B1A',
+    cardAccent: '#1D9E75',
+    cardLabel: 'Company News',
   },
   {
     slug: 'e-waste-rules-2022-guide',
     category: 'EPR',
     title: 'E-Waste Rules 2022: What Changed and What Your Business Must Do Now',
-    excerpt: 'The E-Waste (Management) Rules 2022 significantly expanded producer responsibility. Here is what the rules mean for AP businesses and how to ensure you are on the right side of compliance.',
+    excerpt:
+      'The E-Waste (Management) Rules 2022 significantly expanded producer responsibility. Here is what the rules mean for AP businesses and how to ensure you are on the right side of compliance.',
     readTime: '6 min read',
     date: 'March 20, 2026',
     author: 'RevivaGreen Strategy Team',
     featured: false,
-    cardBg: '#0A1F14', cardAccent: '#5DCAA5', cardLabel: 'E-Waste Rules',
+    cardBg: '#0A1F14',
+    cardAccent: '#5DCAA5',
+    cardLabel: 'E-Waste Rules',
   },
 ]
 
@@ -93,18 +112,50 @@ const CATEGORY_COLORS: Record<string, string> = {
   'Company News':     'bg-[#F5F0E8] text-[#5A5850]',
 }
 
-function ArticleCardImage({ bg, accent, label, category }: {
+function ArticleCardImage({
+  bg, accent, label, category,
+}: {
   bg: string; accent: string; label: string; category: string
 }) {
   return (
-    <div className="w-full aspect-[16/9] flex flex-col items-center justify-center relative overflow-hidden" style={{ background: bg }} aria-hidden="true">
-      <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: `radial-gradient(circle at 20% 80%, ${accent} 0%, transparent 60%), radial-gradient(circle at 80% 20%, ${accent} 0%, transparent 60%)` }} />
-      <div className="absolute inset-0 opacity-[0.06]" style={{ backgroundImage: `linear-gradient(${accent} 1px, transparent 1px), linear-gradient(90deg, ${accent} 1px, transparent 1px)`, backgroundSize: '40px 40px' }} />
-      <div className="relative z-10 text-[11px] font-semibold uppercase tracking-[0.12em] px-3 py-1.5 rounded-full mb-4" style={{ background: `${accent}20`, color: accent, border: `1px solid ${accent}40` }}>
+    <div
+      className="w-full aspect-[16/9] flex flex-col items-center justify-center relative overflow-hidden"
+      style={{ background: bg }}
+      aria-hidden="true"
+    >
+      <div
+        className="absolute inset-0 opacity-[0.04]"
+        style={{
+          backgroundImage: `radial-gradient(circle at 20% 80%, ${accent} 0%, transparent 60%),
+            radial-gradient(circle at 80% 20%, ${accent} 0%, transparent 60%)`,
+        }}
+      />
+      <div
+        className="absolute inset-0 opacity-[0.06]"
+        style={{
+          backgroundImage: `linear-gradient(${accent} 1px, transparent 1px),
+            linear-gradient(90deg, ${accent} 1px, transparent 1px)`,
+          backgroundSize: '40px 40px',
+        }}
+      />
+      <div
+        className="relative z-10 text-[11px] font-semibold uppercase tracking-[0.12em] px-3 py-1.5 rounded-full mb-4"
+        style={{ background: `${accent}20`, color: accent, border: `1px solid ${accent}40` }}
+      >
         {category}
       </div>
-      <p className="relative z-10 text-[15px] font-medium text-center px-6 max-w-[280px] leading-[1.4]" style={{ color: `${accent}CC` }}>{label}</p>
-      <p className="absolute bottom-4 right-4 text-[10px] font-semibold uppercase tracking-[0.1em] opacity-30" style={{ color: accent }}>RevivaGreen Insights</p>
+      <p
+        className="relative z-10 text-[15px] font-medium text-center px-6 max-w-[280px] leading-[1.4]"
+        style={{ color: `${accent}CC` }}
+      >
+        {label}
+      </p>
+      <p
+        className="absolute bottom-4 right-4 text-[10px] font-semibold uppercase tracking-[0.1em] opacity-30"
+        style={{ color: accent }}
+      >
+        RevivaGreen Insights
+      </p>
     </div>
   )
 }
@@ -143,17 +194,30 @@ export default function InsightsPage() {
           </p>
           <Link href={`/insights/${featured.slug}`} className="group block">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+              {/* Card image */}
               <div className="rounded-2xl overflow-hidden">
-                <ArticleCardImage bg={featured.cardBg} accent={featured.cardAccent} label={featured.cardLabel} category={featured.category} />
+                <ArticleCardImage
+                  bg={featured.cardBg}
+                  accent={featured.cardAccent}
+                  label={featured.cardLabel}
+                  category={featured.category}
+                />
               </div>
+
+              {/* Content — single category tag only */}
               <div>
-                <span className={`inline-block text-[11px] font-semibold uppercase tracking-[0.1em] px-3 py-1.5 rounded-full mb-5 ${CATEGORY_COLORS[featured.category]}`}>
+                <span
+                  className={`inline-block text-[11px] font-semibold uppercase tracking-[0.1em] px-3 py-1.5 rounded-full mb-5 ${CATEGORY_COLORS[featured.category]}`}
+                >
                   {featured.category}
                 </span>
                 <h2 className="text-[#0A1F14] font-medium text-[28px] leading-[1.25] mb-4 group-hover:text-[#1D9E75] transition-colors duration-200">
                   {featured.title}
                 </h2>
-                <p className="text-[#888780] text-[16px] leading-[1.7] mb-6">{featured.excerpt}</p>
+                <p className="text-[#888780] text-[16px] leading-[1.7] mb-6">
+                  {featured.excerpt}
+                </p>
                 <div className="flex items-center gap-4 text-[13px] text-[#888780]">
                   <span>{featured.author}</span>
                   <span className="w-1 h-1 rounded-full bg-[#D3D1C7]" />
@@ -168,6 +232,7 @@ export default function InsightsPage() {
                   </svg>
                 </div>
               </div>
+
             </div>
           </Link>
         </div>
@@ -176,34 +241,19 @@ export default function InsightsPage() {
       {/* ── FILTERABLE GRID — client component ────────────── */}
       <InsightsGrid articles={nonFeatured} />
 
-      {/* ── NEWSLETTER ────────────────────────────────────── */}
+      {/* ── NEWSLETTER — client component ─────────────────── */}
       <section className="bg-[#0A1F14] section-py">
         <div className="container">
           <div className="max-w-2xl mx-auto text-center">
             <p className="eyebrow mb-4">Stay informed</p>
-            <h2 className="h2 text-white mb-4">Get regulatory updates in your inbox.</h2>
+            <h2 className="h2 text-white mb-4">
+              Get regulatory updates in your inbox.
+            </h2>
             <p className="text-white/55 text-[17px] leading-[1.7] mb-10">
               EPR rule changes, BRSR filing deadlines, and circular economy
               policy updates — delivered before they affect your business.
             </p>
-            <div className="bg-[#0F2B1A] border border-white/[0.08] rounded-2xl p-8">
-              <div className="flex flex-col sm:flex-row gap-3 mb-4">
-                <input
-                  type="email"
-                  placeholder="your@company.com"
-                  className="flex-1 px-4 py-3 rounded-lg bg-[#0A1F14] border border-white/[0.12] text-white placeholder-white/30 text-[15px] focus:outline-none focus:border-[#1D9E75] transition-colors"
-                  aria-label="Work email address"
-                />
-                <button type="button" className="btn-primary shrink-0 px-6 py-3 text-[15px]">Subscribe</button>
-              </div>
-              <label className="flex items-start gap-3 text-left cursor-pointer">
-                <input type="checkbox" className="mt-1 w-4 h-4 accent-[#1D9E75] shrink-0" />
-                <span className="text-white/40 text-[12px] leading-[1.6]">
-                  I agree to receive regulatory updates from RevivaGreen. Unsubscribe anytime. See our{' '}
-                  <Link href="/privacy" className="text-[#1D9E75] hover:underline">privacy policy</Link>.
-                </span>
-              </label>
-            </div>
+            <NewsletterForm />
           </div>
         </div>
       </section>
