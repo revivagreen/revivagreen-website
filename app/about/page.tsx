@@ -21,16 +21,16 @@ const TEAM = [
   {
     name: 'Ragini Pamulapati',
     role: 'Co-Founder & Director',
-    bio: 'Oversees all financial operations, compliance documentation, and regulatory filings for RevivaGreen Ventures. Responsible for verifying all registration numbers and statutory disclosures.',
-    initials: 'RS',
-    // photo: '/images/team/tulasi.jpg',
+    bio: 'Co-founded RevivaGreen with a focus on building the operational and compliance infrastructure that makes the platform work for AP businesses at scale. Oversees strategic direction, regulatory relationships, and business development.',
+    initials: 'RP',
+    // photo: '/images/team/ragini.jpg',
   },
   {
     name: 'Bharat Reddy Guntaka',
     role: 'Head of Operations',
-    bio: "Oversees RevivaGreen's on-ground operations across Andhra Pradesh — from pickup scheduling and MRF management to driver training and client service quality. Her focus: every client's experience must be identical, professional, and reliable regardless of which branch or district.",
+    bio: "Oversees RevivaGreen's on-ground operations across Andhra Pradesh — from pickup scheduling and MRF management to driver training and client service quality. His focus: every client's experience must be identical, professional, and reliable regardless of which branch or district.",
     initials: 'BR',
-    photo: '/images/team/ragini.jpg',
+    photo: '/images/team/bharat.jpg',
   },
 ]
 
@@ -334,7 +334,7 @@ export default function AboutPage() {
                   Why Vijayawada
                 </p>
                 <p className="text-[#2C2C2A] text-[14px] leading-[1.7]">
-                  The Krishna–Guntur–Eluru economic corridor is one of the most
+                  The Vizag-Chennai economic corridor is one of the most
                   industrially active regions in South India — and it had no
                   professional waste recovery service worth the name. We are
                   changing that from the ground up.
