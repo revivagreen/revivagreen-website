@@ -3,10 +3,18 @@ import Footer from '@/components/Footer'
 import Link from 'next/link'
 import type { Metadata } from 'next'
 
+// ── FIX 1: Correct OG tags for insights listing page ─────────
 export const metadata: Metadata = {
   title: 'Insights — RevivaGreen | Regulatory Intelligence for AP Businesses',
   description:
     'EPR updates, BRSR guides, circular economy news, and regulatory intelligence for businesses in Andhra Pradesh. Stay ahead of compliance with RevivaGreen Insights.',
+  openGraph: {
+    title: 'Insights — RevivaGreen | Regulatory Intelligence for AP Businesses',
+    description:
+      'EPR updates, BRSR guides, circular economy news, and regulatory intelligence for businesses in Andhra Pradesh.',
+    url: 'https://revivagreen.com/insights',
+    type: 'website',
+  },
 }
 
 const ARTICLES = [
@@ -29,7 +37,7 @@ const ARTICLES = [
     category: 'BRSR',
     title: 'How to Complete BRSR Principle 6 — A Practical Guide for Waste Data',
     excerpt:
-      'SEBI\'s Business Responsibility and Sustainability Report requires structured waste data under Principle 6. This guide explains exactly what data you need, where to get it, and how to report it.',
+      "SEBI's Business Responsibility and Sustainability Report requires structured waste data under Principle 6. This guide explains exactly what data you need, where to get it, and how to report it.",
     readTime: '6 min read',
     date: 'May 8, 2026',
     author: 'RevivaGreen Strategy Team',
@@ -41,7 +49,7 @@ const ARTICLES = [
   {
     slug: 'circular-economy-andhra-pradesh',
     category: 'Circular Economy',
-    title: 'Why Andhra Pradesh is Positioned to Lead India\'s Circular Economy Transition',
+    title: "Why Andhra Pradesh is Positioned to Lead India's Circular Economy Transition",
     excerpt:
       'The Krishna–Guntur–Eluru industrial corridor generates more recyclable material per square kilometre than almost anywhere else in South India. Here is the opportunity that organised businesses are missing.',
     readTime: '5 min read',
@@ -57,7 +65,7 @@ const ARTICLES = [
     category: 'EPR',
     title: 'GST on Scrap Sales: What Every Finance Manager in AP Needs to Know',
     excerpt:
-      'Scrap sales are taxable under GST — and most businesses in AP are getting it wrong. Here is a plain-language breakdown of GST applicability, ITC claims, and what your CA needs from your waste vendor.',
+      'Scrap sales are taxable under GST — and most businesses in AP are getting it wrong. Here is a plain-language breakdown of the transaction flow, correct GST rates by material, and what your CA needs from your waste vendor.',
     readTime: '7 min read',
     date: 'April 15, 2026',
     author: 'RevivaGreen Strategy Team',
@@ -105,10 +113,7 @@ const CATEGORY_COLORS: Record<string, string> = {
   'Company News':     'bg-[#F5F0E8] text-[#5A5850]',
 }
 
-// ── STYLED ARTICLE CARD IMAGE ─────────────────────────────────
-function ArticleCardImage({
-  bg, accent, label, category,
-}: {
+function ArticleCardImage({ bg, accent, label, category }: {
   bg: string; accent: string; label: string; category: string
 }) {
   return (
@@ -117,40 +122,16 @@ function ArticleCardImage({
       style={{ background: bg }}
       aria-hidden="true"
     >
-      {/* Background pattern */}
-      <div
-        className="absolute inset-0 opacity-[0.04]"
-        style={{
-          backgroundImage: `radial-gradient(circle at 20% 80%, ${accent} 0%, transparent 60%), radial-gradient(circle at 80% 20%, ${accent} 0%, transparent 60%)`,
-        }}
-      />
-      {/* Grid lines */}
-      <div
-        className="absolute inset-0 opacity-[0.06]"
-        style={{
-          backgroundImage: `linear-gradient(${accent} 1px, transparent 1px), linear-gradient(90deg, ${accent} 1px, transparent 1px)`,
-          backgroundSize: '40px 40px',
-        }}
-      />
-      {/* Category pill */}
-      <div
-        className="relative z-10 text-[11px] font-semibold uppercase tracking-[0.12em] px-3 py-1.5 rounded-full mb-4"
-        style={{ background: `${accent}20`, color: accent, border: `1px solid ${accent}40` }}
-      >
+      <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: `radial-gradient(circle at 20% 80%, ${accent} 0%, transparent 60%), radial-gradient(circle at 80% 20%, ${accent} 0%, transparent 60%)` }} />
+      <div className="absolute inset-0 opacity-[0.06]" style={{ backgroundImage: `linear-gradient(${accent} 1px, transparent 1px), linear-gradient(90deg, ${accent} 1px, transparent 1px)`, backgroundSize: '40px 40px' }} />
+      {/* Single category pill only — no duplicates */}
+      <div className="relative z-10 text-[11px] font-semibold uppercase tracking-[0.12em] px-3 py-1.5 rounded-full mb-4" style={{ background: `${accent}20`, color: accent, border: `1px solid ${accent}40` }}>
         {category}
       </div>
-      {/* Label */}
-      <p
-        className="relative z-10 text-[15px] font-medium text-center px-6 max-w-[280px] leading-[1.4]"
-        style={{ color: `${accent}CC` }}
-      >
+      <p className="relative z-10 text-[15px] font-medium text-center px-6 max-w-[280px] leading-[1.4]" style={{ color: `${accent}CC` }}>
         {label}
       </p>
-      {/* RevivaGreen wordmark */}
-      <p
-        className="absolute bottom-4 right-4 text-[10px] font-semibold uppercase tracking-[0.1em] opacity-30"
-        style={{ color: accent }}
-      >
+      <p className="absolute bottom-4 right-4 text-[10px] font-semibold uppercase tracking-[0.1em] opacity-30" style={{ color: accent }}>
         RevivaGreen Insights
       </p>
     </div>
@@ -191,7 +172,8 @@ export default function InsightsPage() {
           </p>
           <Link href={`/insights/${featured.slug}`} className="group block">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              {/* Featured card image */}
+
+              {/* Card image — no tag duplication here */}
               <div className="rounded-2xl overflow-hidden">
                 <ArticleCardImage
                   bg={featured.cardBg}
@@ -200,7 +182,8 @@ export default function InsightsPage() {
                   category={featured.category}
                 />
               </div>
-              {/* Content */}
+
+              {/* Content — single category tag only */}
               <div>
                 <span className={`inline-block text-[11px] font-semibold uppercase tracking-[0.1em] px-3 py-1.5 rounded-full mb-5 ${CATEGORY_COLORS[featured.category]}`}>
                   {featured.category}
@@ -260,6 +243,7 @@ export default function InsightsPage() {
                     category={article.category}
                   />
                   <div className="flex flex-col flex-1 p-6">
+                    {/* Single category tag — no duplicates */}
                     <span className={`self-start text-[11px] font-semibold uppercase tracking-[0.08em] px-2.5 py-1 rounded-full mb-4 ${CATEGORY_COLORS[article.category] ?? 'bg-[#F5F0E8] text-[#5A5850]'}`}>
                       {article.category}
                     </span>
