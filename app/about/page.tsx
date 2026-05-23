@@ -234,7 +234,7 @@ export default function AboutPage() {
                 </p>
                 <p>
                   We chose to start in Vijayawada because this economic corridor —
-                  from Krishna to Guntur to Eluru — is one of the most
+                  from Vizag to Chennai — is one of the most
                   industrially active regions in South India, and it had no
                   professional waste recovery service worth the name.
                 </p>
