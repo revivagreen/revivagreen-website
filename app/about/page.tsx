@@ -23,7 +23,7 @@ const TEAM = [
     role: 'Co-Founder & Director',
     bio: 'Co-founded RevivaGreen with a focus on building the operational and compliance infrastructure that makes the platform work for AP businesses at scale. Oversees strategic direction, regulatory relationships, and business development.',
     initials: 'RP',
-    // photo: '/images/team/ragini.jpg',
+    photo: '/images/team/ragini.jpg',
   },
   {
     name: 'Bharat Reddy Guntaka',
