@@ -28,7 +28,7 @@ export async function POST(req: NextRequest) {
           <div style="font-family:sans-serif;max-width:560px;margin:0 auto">
             <div style="background:#0A1F14;padding:32px 40px;border-radius:8px 8px 0 0">
               <h1 style="color:#ffffff;font-size:22px;font-weight:600;margin:0">
-                Reviva<span style="color:#1D9E75">Green</span> Insights
+                <span style="color:#1D9E75">RevivaGreen</span> Insights
               </h1>
             </div>
             <div style="background:#F5F0E8;padding:32px 40px;border-radius:0 0 8px 8px">
