@@ -1,13 +1,9 @@
+'use client'
+
+import { useState } from 'react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import Link from 'next/link'
-import type { Metadata } from 'next'
-
-export const metadata: Metadata = {
-  title: 'Platform — RevivaGreen | Waste Management Dashboard & ESG Reporting',
-  description:
-    'One screen for your entire waste operation. Real-time multi-branch dashboard, GST invoice management, ESG reporting, and mobile access for GMs across Andhra Pradesh.',
-}
 
 /* ── FEATURES DATA ───────────────────────────────────────── */
 const FEATURES = [
@@ -24,7 +20,6 @@ const FEATURES = [
       'Month-on-month comparison charts',
       'Role-based access: GM, finance, sustainability',
     ],
-    visual: <DashboardMockup />,
     flip: false,
   },
   {
@@ -40,7 +35,6 @@ const FEATURES = [
       'WhatsApp-integrated scheduling for facility managers',
       'Works on any smartphone — no app install required',
     ],
-    visual: <MobileMockup />,
     flip: true,
   },
   {
@@ -56,7 +50,6 @@ const FEATURES = [
       'PDF + Excel export formats',
       'Auditor verification trail via GST invoice links',
     ],
-    visual: <EsgReportMockup />,
     flip: false,
   },
 ]
@@ -91,7 +84,7 @@ const TIERS = [
       'Priority pickup scheduling',
       'Invoice + ESG data API access',
     ],
-    cta: { label: 'Request a demo', href: '/contact' },
+    cta: { label: 'Request a demo', href: '#demo' },
     highlight: true,
   },
   {
@@ -108,7 +101,7 @@ const TIERS = [
       'SLA-backed pickup commitments',
       'Dedicated compliance manager',
     ],
-    cta: { label: 'Talk to us', href: '/contact' },
+    cta: { label: 'Talk to us', href: '#demo' },
     highlight: false,
   },
 ]
@@ -134,12 +127,8 @@ export default function PlatformPage() {
               sustainability teams one unified platform.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
-              <Link href="/contact" className="btn-primary">
-                Request a demo
-              </Link>
-              <a href="#pricing" className="btn-outline-white">
-                See pricing
-              </a>
+              <a href="#demo" className="btn-primary">Request a demo</a>
+              <a href="#pricing" className="btn-outline-white">See pricing</a>
             </div>
           </div>
 
@@ -164,9 +153,7 @@ export default function PlatformPage() {
               <div className={feature.flip ? 'lg:col-start-2' : ''}>
                 <p className="eyebrow mb-4">{feature.tag}</p>
                 <h2 className="h2 text-[#0A1F14] mb-5">{feature.title}</h2>
-                <p className="text-[#2C2C2A] text-[17px] leading-[1.75] mb-8">
-                  {feature.description}
-                </p>
+                <p className="text-[#2C2C2A] text-[17px] leading-[1.75] mb-8">{feature.description}</p>
                 <ul className="space-y-3 mb-8">
                   {feature.bullets.map((b) => (
                     <li key={b} className="flex gap-3 text-[15px] text-[#2C2C2A]">
@@ -177,14 +164,14 @@ export default function PlatformPage() {
                     </li>
                   ))}
                 </ul>
-                <Link href="/contact" className="btn-primary">
-                  Request a demo
-                </Link>
+                <a href="#demo" className="btn-primary">Request a demo</a>
               </div>
 
               {/* Visual */}
               <div className={feature.flip ? 'lg:col-start-1 lg:row-start-1' : ''}>
-                {feature.visual}
+                {feature.id === 'dashboard' && <DashboardMockup />}
+                {feature.id === 'mobile'    && <MobileMockup />}
+                {feature.id === 'esg'       && <EsgReportMockup />}
               </div>
 
             </div>
@@ -197,9 +184,7 @@ export default function PlatformPage() {
         <div className="container">
           <div className="max-w-2xl mx-auto text-center mb-14">
             <p className="eyebrow mb-4">Pricing</p>
-            <h2 className="h2 text-white mb-4">
-              Simple, transparent pricing.
-            </h2>
+            <h2 className="h2 text-white mb-4">Simple, transparent pricing.</h2>
             <p className="text-white/55 text-[17px] leading-[1.7]">
               All plans include GST invoicing and basic reporting.
               Upgrade as your compliance needs grow.
@@ -221,7 +206,6 @@ export default function PlatformPage() {
                     Most popular
                   </span>
                 )}
-
                 <p className={`text-[13px] font-semibold uppercase tracking-[0.1em] mb-2 ${tier.highlight ? 'text-white/70' : 'text-[#888780]'}`}>
                   {tier.name}
                 </p>
@@ -236,7 +220,6 @@ export default function PlatformPage() {
                 <p className={`text-[14px] leading-[1.65] mb-6 pb-6 border-b ${tier.highlight ? 'text-white/75 border-white/20' : 'text-white/50 border-white/[0.08]'}`}>
                   {tier.description}
                 </p>
-
                 <ul className="space-y-3 flex-1 mb-8">
                   {tier.features.map((f) => (
                     <li key={f} className={`flex gap-3 text-[14px] ${tier.highlight ? 'text-white/90' : 'text-white/60'}`}>
@@ -247,8 +230,7 @@ export default function PlatformPage() {
                     </li>
                   ))}
                 </ul>
-
-                <Link
+                <a
                   href={tier.cta.href}
                   className={`text-center py-3 px-6 rounded-lg text-[15px] font-medium transition-all duration-200 ${
                     tier.highlight
@@ -257,7 +239,7 @@ export default function PlatformPage() {
                   }`}
                 >
                   {tier.cta.label}
-                </Link>
+                </a>
               </div>
             ))}
           </div>
@@ -269,22 +251,18 @@ export default function PlatformPage() {
       </section>
 
       {/* ── S6: DEMO FORM ─────────────────────────────────── */}
-      <section className="bg-[#F5F0E8] section-py">
+      <section id="demo" className="bg-[#F5F0E8] section-py">
         <div className="container">
           <div className="max-w-2xl mx-auto">
             <div className="text-center mb-10">
               <p className="eyebrow mb-4">Book a demo</p>
-              <h2 className="h2 text-[#0A1F14] mb-4">
-                See the platform live.
-              </h2>
+              <h2 className="h2 text-[#0A1F14] mb-4">See the platform live.</h2>
               <p className="text-[#888780] text-[17px] leading-[1.7]">
                 We will walk you through the dashboard, ESG reports, and
                 invoicing flow — tailored to your business type.
                 Response within 4 business hours.
               </p>
             </div>
-
-            {/* Form */}
             <div className="bg-white border border-[#D3D1C7] rounded-2xl p-8">
               <DemoForm />
             </div>
@@ -297,12 +275,119 @@ export default function PlatformPage() {
   )
 }
 
-/* ── VISUAL MOCKUPS ──────────────────────────────────────── */
+/* ── WORKING DEMO FORM ───────────────────────────────────── */
+function DemoForm() {
+  const [form, setForm]     = useState({ company: '', locations: '', city: '', scrap: '', name: '', phone: '', email: '' })
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const [errMsg, setErrMsg] = useState('')
 
+  const set = (field: string) => (e: React.ChangeEvent<HTMLInputElement>) =>
+    setForm((f) => ({ ...f, [field]: e.target.value }))
+
+  const handleSubmit = async () => {
+    if (!form.name || !form.phone) {
+      setErrMsg('Please fill in your name and phone number.')
+      return
+    }
+    setStatus('loading')
+    setErrMsg('')
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ formType: 'demo', ...form }),
+      })
+      if (!res.ok) throw new Error()
+      setStatus('success')
+    } catch {
+      setStatus('error')
+      setErrMsg('Something went wrong. Please WhatsApp us directly.')
+    }
+  }
+
+  if (status === 'success') {
+    return (
+      <div className="text-center py-10">
+        <div className="w-14 h-14 rounded-full bg-[#1D9E75]/10 border-2 border-[#1D9E75] flex items-center justify-center mx-auto mb-5">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
+        </div>
+        <h3 className="text-[#0A1F14] font-medium text-[20px] mb-2">Demo request received</h3>
+        <p className="text-[#888780] text-[15px]">
+          We will contact you within 4 business hours on{' '}
+          <strong className="text-[#0A1F14]">{form.phone}</strong>.
+        </p>
+      </div>
+    )
+  }
+
+  return (
+    <div className="space-y-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <Field id="p-company"   label="Company name"        type="text"   placeholder="Lakshmi Group"         value={form.company}   onChange={set('company')}   />
+        <Field id="p-locations" label="Number of locations" type="number" placeholder="e.g. 3"                value={form.locations} onChange={set('locations')} />
+      </div>
+      <Field id="p-city"  label="Primary city"       type="text" placeholder="e.g. Vijayawada"          value={form.city}  onChange={set('city')}  />
+      <Field id="p-scrap" label="Primary scrap types" type="text" placeholder="e.g. Iron, aluminium, plastic" value={form.scrap} onChange={set('scrap')} />
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <Field id="p-name"  label="Your name"    type="text" placeholder="Full name"       value={form.name}  onChange={set('name')}  required />
+        <Field id="p-phone" label="Phone number" type="tel"  placeholder="+91 98765 43210" value={form.phone} onChange={set('phone')} required />
+      </div>
+      <Field id="p-email" label="Work email" type="email" placeholder="you@company.com" value={form.email} onChange={set('email')} />
+
+      {errMsg && <p className="text-red-500 text-[13px]">{errMsg}</p>}
+
+      <p className="text-[12px] text-[#888780]">
+        We will respond within 4 business hours. Your information is kept confidential and never shared.
+      </p>
+      <button
+        type="button"
+        onClick={handleSubmit}
+        disabled={status === 'loading'}
+        className="btn-primary w-full justify-center py-3.5 text-[15px] disabled:opacity-60 disabled:cursor-not-allowed"
+      >
+        {status === 'loading' ? 'Sending…' : 'Request demo →'}
+      </button>
+      <p className="text-center text-[12px] text-[#888780]">
+        Prefer WhatsApp?{' '}
+        <a
+          href="https://wa.me/918500626999?text=Hi%20RevivaGreen%2C%20I%20want%20to%20book%20a%20platform%20demo"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[#1D9E75] hover:underline"
+        >
+          Message us directly
+        </a>
+      </p>
+    </div>
+  )
+}
+
+function Field({
+  id, label, type, placeholder, value, onChange, required,
+}: {
+  id: string; label: string; type: string; placeholder: string
+  value: string; onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  required?: boolean
+}) {
+  return (
+    <div>
+      <label htmlFor={id} className="block text-[13px] font-medium text-[#1A1A1A] mb-2">
+        {label} {required && <span className="text-[#1D9E75]">*</span>}
+      </label>
+      <input
+        id={id} type={type} placeholder={placeholder} value={value} onChange={onChange}
+        className="w-full px-4 py-3 rounded-lg border border-[#D3D1C7] bg-white text-[15px] text-[#1A1A1A] placeholder-[#888780] focus:outline-none focus:border-[#1D9E75] focus:ring-2 focus:ring-[#1D9E75]/10 transition-colors"
+      />
+    </div>
+  )
+}
+
+/* ── VISUAL MOCKUPS ──────────────────────────────────────── */
 function HeroDashboard() {
   return (
     <div className="bg-[#0F2B1A] p-6 min-h-[280px]">
-      {/* Top bar */}
       <div className="flex items-center justify-between mb-6">
         <div>
           <p className="text-white/40 text-[11px] uppercase tracking-wide">RevivaGreen Platform</p>
@@ -313,12 +398,11 @@ function HeroDashboard() {
           Live
         </span>
       </div>
-      {/* Stat cards */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
         {[
-          { label: 'Pickups this month', value: '43' },
+          { label: 'Pickups this month', value: '43'    },
           { label: 'Tonnes collected',   value: '28.4t' },
-          { label: 'Invoices issued',    value: '43' },
+          { label: 'Invoices issued',    value: '43'    },
           { label: 'CO₂ diverted',       value: '15.8t' },
         ].map((s) => (
           <div key={s.label} className="bg-[#0A1F14] rounded-xl p-4">
@@ -327,20 +411,12 @@ function HeroDashboard() {
           </div>
         ))}
       </div>
-      {/* Bar chart placeholder */}
       <div className="bg-[#0A1F14] rounded-xl p-4">
         <p className="text-white/40 text-[11px] uppercase tracking-wide mb-4">Monthly collections by material (kg)</p>
         <div className="flex items-end gap-3 h-20">
           {[65, 40, 85, 30, 55, 70, 45].map((h, i) => (
-            <div
-              key={i}
-              className="flex-1 rounded-t bg-[#1D9E75]/30 relative"
-              style={{ height: `${h}%` }}
-            >
-              <div
-                className="absolute bottom-0 left-0 right-0 rounded-t bg-[#1D9E75]"
-                style={{ height: '40%' }}
-              />
+            <div key={i} className="flex-1 rounded-t bg-[#1D9E75]/30 relative" style={{ height: `${h}%` }}>
+              <div className="absolute bottom-0 left-0 right-0 rounded-t bg-[#1D9E75]" style={{ height: '40%' }} />
             </div>
           ))}
         </div>
@@ -360,11 +436,7 @@ function DashboardMockup() {
       </div>
       <div className="p-5">
         <div className="grid grid-cols-3 gap-3 mb-4">
-          {[
-            { v: '8', l: 'Locations' },
-            { v: '₹0', l: 'Pending invoices' },
-            { v: '12.4t', l: 'This month' },
-          ].map((s) => (
+          {[{ v: '8', l: 'Locations' }, { v: '₹0', l: 'Pending invoices' }, { v: '12.4t', l: 'This month' }].map((s) => (
             <div key={s.l} className="bg-[#0F2B1A] rounded-lg p-3 text-center">
               <p className="text-[#1D9E75] text-[18px] font-semibold">{s.v}</p>
               <p className="text-white/35 text-[10px] mt-1">{s.l}</p>
@@ -391,16 +463,13 @@ function MobileMockup() {
   return (
     <div className="flex justify-center">
       <div className="w-64 bg-[#0A1F14] rounded-[32px] border-4 border-white/10 overflow-hidden shadow-[0_16px_48px_rgba(0,0,0,0.2)]">
-        {/* Status bar */}
         <div className="bg-[#0F2B1A] px-5 pt-3 pb-2 flex justify-between items-center">
           <span className="text-white/40 text-[10px]">9:41</span>
           <span className="text-white/40 text-[10px]">●●●</span>
         </div>
-        {/* App content */}
         <div className="p-4">
           <p className="text-white/40 text-[10px] uppercase tracking-wide mb-1">Good morning</p>
           <p className="text-white font-medium text-[14px] mb-4">Surendra</p>
-          {/* Quick stats */}
           <div className="grid grid-cols-2 gap-2 mb-4">
             {[{ v: '3', l: 'Pickups today' }, { v: '8', l: 'Locations' }].map((s) => (
               <div key={s.l} className="bg-[#0F2B1A] rounded-xl p-3">
@@ -409,7 +478,6 @@ function MobileMockup() {
               </div>
             ))}
           </div>
-          {/* Recent activity */}
           <p className="text-white/30 text-[10px] uppercase tracking-wide mb-2">Recent</p>
           {['Pickup completed', 'Invoice ready', 'ESG updated'].map((item, i) => (
             <div key={item} className="flex items-center gap-2 py-2 border-b border-white/[0.06]">
@@ -432,9 +500,7 @@ function EsgReportMockup() {
           <p className="text-white/40 text-[11px] uppercase tracking-wide">ESG Impact Report</p>
           <p className="text-white font-medium text-[14px] mt-0.5">May 2026 · All Branches</p>
         </div>
-        <span className="bg-[#1D9E75]/20 text-[#1D9E75] text-[10px] font-semibold uppercase tracking-wide px-2.5 py-1 rounded-full">
-          BRSR P6
-        </span>
+        <span className="bg-[#1D9E75]/20 text-[#1D9E75] text-[10px] font-semibold uppercase tracking-wide px-2.5 py-1 rounded-full">BRSR P6</span>
       </div>
       <div className="p-5">
         <div className="grid grid-cols-3 gap-3 mb-5">
@@ -445,12 +511,7 @@ function EsgReportMockup() {
             </div>
           ))}
         </div>
-        {[
-          { label: 'Iron / Steel', pct: 68 },
-          { label: 'Aluminium',   pct: 18 },
-          { label: 'Copper',      pct: 8  },
-          { label: 'Plastic',     pct: 6  },
-        ].map((m) => (
+        {[{ label: 'Iron / Steel', pct: 68 }, { label: 'Aluminium', pct: 18 }, { label: 'Copper', pct: 8 }, { label: 'Plastic', pct: 6 }].map((m) => (
           <div key={m.label} className="mb-2.5">
             <div className="flex justify-between mb-1">
               <span className="text-[12px] text-[#2C2C2A]">{m.label}</span>
@@ -466,123 +527,6 @@ function EsgReportMockup() {
           <span className="text-[11px] font-medium text-[#1D9E75]">Download PDF ↓</span>
         </div>
       </div>
-    </div>
-  )
-}
-
-/* ── DEMO FORM ───────────────────────────────────────────── */
-function DemoForm() {
-  return (
-    <div className="space-y-5">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-        <div>
-          <label className="block text-[13px] font-medium text-[#1A1A1A] mb-2" htmlFor="company">
-            Company name *
-          </label>
-          <input
-            id="company"
-            type="text"
-            placeholder="Lakshmi Group"
-            className="w-full px-4 py-3 rounded-lg border border-[#D3D1C7] text-[15px] text-[#1A1A1A] placeholder-[#888780] focus:outline-none focus:border-[#1D9E75] focus:ring-2 focus:ring-[#1D9E75]/10 transition-colors"
-          />
-        </div>
-        <div>
-          <label className="block text-[13px] font-medium text-[#1A1A1A] mb-2" htmlFor="locations">
-            Number of locations *
-          </label>
-          <input
-            id="locations"
-            type="number"
-            placeholder="e.g. 3"
-            min="1"
-            className="w-full px-4 py-3 rounded-lg border border-[#D3D1C7] text-[15px] text-[#1A1A1A] placeholder-[#888780] focus:outline-none focus:border-[#1D9E75] focus:ring-2 focus:ring-[#1D9E75]/10 transition-colors"
-          />
-        </div>
-      </div>
-
-      <div>
-        <label className="block text-[13px] font-medium text-[#1A1A1A] mb-2" htmlFor="city">
-          Primary city *
-        </label>
-        <input
-          id="city"
-          type="text"
-          placeholder="e.g. Vijayawada"
-          className="w-full px-4 py-3 rounded-lg border border-[#D3D1C7] text-[15px] text-[#1A1A1A] placeholder-[#888780] focus:outline-none focus:border-[#1D9E75] focus:ring-2 focus:ring-[#1D9E75]/10 transition-colors"
-        />
-      </div>
-
-      <div>
-        <label className="block text-[13px] font-medium text-[#1A1A1A] mb-2" htmlFor="scrap">
-          Primary scrap types
-        </label>
-        <input
-          id="scrap"
-          type="text"
-          placeholder="e.g. Iron, aluminium, plastic"
-          className="w-full px-4 py-3 rounded-lg border border-[#D3D1C7] text-[15px] text-[#1A1A1A] placeholder-[#888780] focus:outline-none focus:border-[#1D9E75] focus:ring-2 focus:ring-[#1D9E75]/10 transition-colors"
-        />
-      </div>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-        <div>
-          <label className="block text-[13px] font-medium text-[#1A1A1A] mb-2" htmlFor="name">
-            Your name *
-          </label>
-          <input
-            id="name"
-            type="text"
-            placeholder="Full name"
-            className="w-full px-4 py-3 rounded-lg border border-[#D3D1C7] text-[15px] text-[#1A1A1A] placeholder-[#888780] focus:outline-none focus:border-[#1D9E75] focus:ring-2 focus:ring-[#1D9E75]/10 transition-colors"
-          />
-        </div>
-        <div>
-          <label className="block text-[13px] font-medium text-[#1A1A1A] mb-2" htmlFor="phone">
-            Phone number *
-          </label>
-          <input
-            id="phone"
-            type="tel"
-            placeholder="+91 98765 43210"
-            className="w-full px-4 py-3 rounded-lg border border-[#D3D1C7] text-[15px] text-[#1A1A1A] placeholder-[#888780] focus:outline-none focus:border-[#1D9E75] focus:ring-2 focus:ring-[#1D9E75]/10 transition-colors"
-          />
-        </div>
-      </div>
-
-      <div>
-        <label className="block text-[13px] font-medium text-[#1A1A1A] mb-2" htmlFor="email">
-          Work email *
-        </label>
-        <input
-          id="email"
-          type="email"
-          placeholder="you@company.com"
-          className="w-full px-4 py-3 rounded-lg border border-[#D3D1C7] text-[15px] text-[#1A1A1A] placeholder-[#888780] focus:outline-none focus:border-[#1D9E75] focus:ring-2 focus:ring-[#1D9E75]/10 transition-colors"
-        />
-      </div>
-
-      <p className="text-[12px] text-[#888780]">
-        We will respond within 4 business hours. Your information is kept confidential and never shared.
-      </p>
-
-      <button
-        type="button"
-        className="btn-primary w-full justify-center py-3.5 text-[15px]"
-      >
-        Request demo →
-      </button>
-
-      <p className="text-center text-[12px] text-[#888780]">
-        Prefer WhatsApp?{' '}
-        <a
-          href="https://wa.me/918500626999?text=Hi%20RevivaGreen%2C%20I%20want%20to%20book%20a%20platform%20demo"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-[#1D9E75] hover:underline"
-        >
-          Message us directly
-        </a>
-      </p>
     </div>
   )
 }
