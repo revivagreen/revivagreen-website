@@ -83,8 +83,9 @@ export default function ImpactPage() {
           </h1>
           <p className="mt-5 text-white/60 text-[18px] leading-[1.7] max-w-xl">
             Our impact numbers come from verified operational records —
-            not estimates. Every figure is linked to a GST invoice and
-            available for independent audit.
+  not estimates. Every figure is linked to a GST invoice and
+  available for independent audit. APPCB-authorised capacity:
+  600 TPA across all material categories.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <a href="#data" className="btn-primary">See live data</a>
@@ -297,6 +298,12 @@ export default function ImpactPage() {
               { name: 'DPIIT Recognised', number: 'DIPP212171',          color: '#C8A84B', desc: 'Department for Promotion of Industry and Internal Trade — Startup India.' },
               { name: 'MSME Registered',  number: 'UDYAM-AP-06-0101707', color: '#C8A84B', desc: 'Registered under Government of India MSME Udyam framework.'              },
               { name: 'GST Registered',   number: '37AAOCR8130R1ZG',     color: '#1D9E75', desc: 'Fully GST-registered. Every transaction is invoiced and tax-compliant.'   },
+              {
+  name: 'APPCB Consent to Operate',
+  number: 'K-3299/PCB/RO-VJA/CTO/W&A/2026-357',
+  color: '#1D9E75',
+  desc: 'Consent to Operate issued by APPCB. Orange category · Hazardous Waste Authorisation. Authorised capacity: 600 TPA total. Valid 27 May 2026 – 30 April 2031.',
+},
             ].map((cert) => (
               <div key={cert.name} className="border rounded-xl p-6" style={{ borderColor: `${cert.color}25` }}>
                 <div

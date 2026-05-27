@@ -58,14 +58,14 @@ const CERTIFICATIONS = [
       'Fully GST-registered entity under RevivaGreen Ventures Private Limited. Every transaction is documented and compliant with Indian tax law.',
     color: '#1D9E75',
   },
-  // ── UNCOMMENT BELOW ONCE APPCB CERTIFICATE IS RECEIVED ──
-  // {
-  //   name: 'APPCB Certified',
-  //   number: 'CFE/CFO Ref: [insert number]',
-  //   description:
-  //     'Consent to Establish and Operate issued by the Andhra Pradesh Pollution Control Board. Our Material Recovery Facility is CPCB-authorised.',
-  //   color: '#1D9E75',
-  // },
+  
+   {
+    name: 'APPCB Consent to Operate',
+    number: 'K-3299/PCB/RO-VJA/CTO/W&A/2026-357',
+    description:
+      'Consent to Operate issued by the Andhra Pradesh Pollution Control Board. Orange category · Hazardous Waste Authorisation included. Valid 27 May 2026 – 30 April 2031. Material Recovery Facility, Surampalli, Gannavaram, Krishna District.',
+    color: '#1D9E75',
+  },
 ]
 
 /* ── TIMELINE ────────────────────────────────────────────── */

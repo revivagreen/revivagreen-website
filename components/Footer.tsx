@@ -5,6 +5,7 @@ const REGISTRATION = {
   cin:   'CIN: U38120AP2025PTC120216',
   dpiit: 'DPIIT: DIPP212171',
   msme:  'MSME: UDYAM-AP-06-0101707',
+  appcb: 'APPCB CTO: K-3299/PCB/RO-VJA/CTO/W&A/2026-357',
 }
 
 const WHATSAPP = 'https://wa.me/918500626999?text=Hi%20RevivaGreen%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services'
